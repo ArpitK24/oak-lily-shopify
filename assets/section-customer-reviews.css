@@ -1,175 +1,305 @@
-/* Oak & Lily Customer Reviews Section */
+@font-face {
+  font-family: 'JudgemeStar';
+  src: url("data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAScAA0AAAAABrAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAAEgAAAABoAAAAcbyQ+3kdERUYAAARgAAAAHgAAACAAMwAGT1MvMgAAAZgAAABGAAAAVi+vS9xjbWFwAAAB8AAAAEAAAAFKwBMjvmdhc3AAAARYAAAACAAAAAj//wADZ2x5ZgAAAkAAAAEJAAABdH33LXtoZWFkAAABMAAAAC0AAAA2BroQKWhoZWEAAAFgAAAAHAAAACQD5QHQaG10eAAAAeAAAAAPAAAAFAYAAABsb2NhAAACMAAAAA4AAAAOAO4AeG1heHAAAAF8AAAAHAAAACAASgAvbmFtZQAAA0wAAADeAAABkorWfVZwb3N0AAAELAAAACkAAABEp3ubLXgBY2BkYADhPPP4OfH8Nl8ZuJkYQODS2fRrCPr/aSYGxq1ALgcDWBoAO60LkwAAAHgBY2BkYGDc+v80gx4TAwgASaAICmABAFB+Arl4AWNgZGBgYGPQYWBiAAIwyQgWc2AAAwAHVQB6eAFjYGRiYJzAwMrAwejDmMbAwOAOpb8ySDK0MDAwMbByMsCBAAMCBKS5pjA4PGB4wMR44P8BBj3GrQymQGFGkBwAjtgK/gAAeAFjYoAAEA1jAwAAZAAHAHgB3crBCcAwDEPRZydkih567CDdf4ZskmLwFBV8xBfCaC4BXkOUmx4sU0h2ngNb9V0vQCxaRKIAevT7fGWuBrEAAAAAAAAAAAA0AHgAugAAeAF9z79Kw1AUx/FzTm7un6QmJtwmQ5Bg1abgEGr/BAqlU6Gju+Cgg1MkQ/sA7Vj7BOnmO/gUvo2Lo14NqIO6/IazfD8HEODtmQCfoANwNsyp2/GJt3WKQrd1NLiYYWx2PBqOsmJMEOznPOTzfSCrhAtbbLdmeFLJV9eKd63WLrZcIcuaEVdssWCKM6pLCfTVOYbz/0pNSMSZKLIZpvh78sAUH6PlMrreTCabP9r+Z/puPZ2ur/RqpQHgh+MIegCnXeM4MRAPjYN//5tj4ZtTjkFqEdmeMShlEJ7tVAly2TAkx6R68Fl4E/aVvn8JqHFQ4JS1434gXKcuL31dDhzs3YbsEOAd/IU88gAAAHgBfY4xTgMxEEVfkk0AgRCioKFxQYd2ZRtpixxgRU2RfhU5q5VWseQ4JdfgAJyBlmNwAM7ABRhZQ0ORwp7nr+eZAa54YwYg9zm3ynPOeFRe8MCrciXOh/KSS76UV5L/iDmrLiS5AeU519wrL3jmSbkS5115yR2fyivJv9kx0ZMZ2RLZw27q87iNQi8EBo5FSPIMw3HqBboi5lKTGAGDp8FKXWP+t9TU01Lj5His1Ba6uM9dTEMwvrFmbf5GC/q2drW3ruXUhhsCiQOjznFlCzYhHUZp4xp76vsvQh89CQAAeAFjYGJABowM6IANLMrEyMTIzMjCXpyRWJBqZshWXJJYBKOMAFHFBucAAAAAAAAB//8AAngBY2BkYGDgA2IJBhBgAvKZGViBJAuYxwAABJsAOgAAeAFjYGBgZACCk535hiD60tn0azAaAEqpB6wAAA==") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.jdgm-star {
+  font-family: 'JudgemeStar' !important;
+  display: inline !important;
+  text-decoration: none !important;
+  padding: 0 4px 0 0 !important;
+  margin: 0 !important;
+  font-weight: bold;
+  opacity: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.jdgm-star:hover { opacity: 1; }
+.jdgm-star:last-of-type { padding: 0 !important; }
+.jdgm-star.jdgm--on:before { content: "\e000"; }
+.jdgm-star.jdgm--off:before { content: "\e001"; }
+.jdgm-star.jdgm--half:before { content: "\e002"; }
+
 .customer-reviews-section {
-  padding: 56px 0;
-  background: #ffffff;
   width: 100%;
+  padding: 40px 20px 60px;
+  background-color: #ffffff;
+  box-sizing: border-box;
 }
 
-.customer-reviews__container {
-  max-width: 1600px;
+:has(>.jdgm-testimonials-carousel) { width: 100%; }
+
+.jdgm-testimonials-carousel {
   margin: 0 auto;
-}
-
-.customer-reviews__header {
+  max-width: var(--max-width, 1100px);
+  padding: 20px 0;
   text-align: center;
-  margin-bottom: 36px;
-  padding: 0 20px;
+  box-sizing: border-box;
 }
 
-.customer-reviews__title {
-  font-family: var(--font-heading-family, "Montserrat", sans-serif);
-  font-size: clamp(24px, 2.5vw, 34px);
-  font-weight: 700;
-  color: #103f5a;
-  margin: 0 0 12px;
+.jdgm-testimonials-carousel .jdgm-header {
+  margin-bottom: 40px;
 }
 
-.customer-reviews__meta {
+.jdgm-testimonials-carousel .jdgm-title {
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 32px;
+  font-weight: 500;
+  margin: 0 0 8px;
+  color: var(--header-color, var(--text-color, #103f5a));
+  line-height: 1.2;
+}
+
+.jdgm-testimonials-carousel .jdgm-header-info {
   display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
+  margin-top: 8px;
 }
 
-.customer-reviews__rating {
+.jdgm-testimonials-carousel .jdgm-average-rating {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.customer-reviews__stars {
-  color: #e7be27;
-  font-size: 18px;
-  letter-spacing: 2px;
+.jdgm-testimonials-carousel .jdgm-average-rating .jdgm-star {
+  color: var(--stars-color, #e7be27);
+  line-height: 1;
+  font-size: 20px;
 }
 
-.customer-reviews__score {
-  font-family: var(--font-body-family, "Montserrat", sans-serif);
-  font-size: 14px;
-  font-weight: 600;
-  color: #103f5a;
+.jdgm-testimonials-carousel .jdgm-rating-text {
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 16px;
+  color: var(--header-color, var(--text-color, #103f5a));
+  font-weight: 400;
 }
 
-.customer-reviews__verified-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #eaf5f2;
-  color: #108474;
-  padding: 3px 10px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 600;
+.jdgm-testimonials-carousel .jdgm-rating-text .jdgm-rating-star {
+  color: var(--stars-color, #e7be27);
 }
 
-.verified-icon {
-  width: 14px;
-  height: 14px;
-  fill: #108474;
-}
-
-.customer-reviews__carousel-track {
+.jdgm-testimonials-carousel .jdgm-verified-badge-header {
   display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.jdgm-testimonials-carousel .jdgm-verified-text {
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 16px;
+  color: var(--header-color, var(--text-color, #103f5a));
+  font-weight: 400;
+}
+
+.jdgm-testimonials-carousel .jdgm-verified-checkmark {
+  width: 20px;
+  height: 20px;
+  fill: #3eb2a2;
+}
+
+.jdgm-testimonials-carousel .jdgm-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 16px 3.6% 32px;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
+  margin-bottom: 40px;
+  width: 100%;
 }
 
-.customer-reviews__carousel-track::-webkit-scrollbar {
-  display: none;
+.jdgm-testimonials-carousel .jdgm-testimonials-container {
+  position: relative;
+  height: auto;
+  min-height: 240px;
+  width: 100%;
 }
 
-.customer-reviews__card {
-  flex: 0 0 340px;
-  min-width: 280px;
-  scroll-snap-align: start;
-  background: #f8f4ef;
-  border-radius: 8px;
-  box-shadow: 0px 0px 40px 0px #d0d0d0;
-  padding: 24px;
+.jdgm-testimonials-carousel .jdgm-testimonial {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .5s ease-in-out, visibility .5s ease-in-out;
+  pointer-events: none;
+  background: var(--card-color, #f8f4ef);
+  border-radius: var(--border-radius, 8px);
+  border: var(--border, none);
+  box-shadow: var(--box-shadow, 0px 0px 40px 0px #D0D0D0);
+  padding: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
   box-sizing: border-box;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.customer-reviews__card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0px 6px 44px 0px #c4c4c4;
+.jdgm-testimonials-carousel .jdgm-testimonial.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  position: relative;
 }
 
-.quote-mark {
-  font-family: Georgia, serif;
-  font-size: 38px;
-  line-height: 1;
-  color: #e7be27;
+.jdgm-testimonials-carousel .jdgm-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.jdgm-testimonials-carousel .jdgm-quote-marks {
+  height: var(--quote-size, 24px);
+  background-image: var(--quote-bg, url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNzMgNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0iI2U3YmUyNyIgZD0iTTQuNDY1MTIgNDhWNDQuMDkzQzEwLjcyODcgNDAuNTU4MSAxNC44MjE3IDM3LjM2NDMgMTYuNzQ0MiAzNC41MTE2QzE4LjcyODcgMzEuNTk2OSAxOS43MjA5IDI4LjI0ODEgMTkuNzIwOSAyNC40NjUxQzE5LjcyMDkgMjIuNzI4NyAxOS40MTA5IDIxLjQyNjQgMTguNzkwNyAyMC41NTgxQzE4LjEwODUgMTkuNjg5OSAxNy4zNjQzIDE5LjI1NTggMTYuNTU4MSAxOS4yNTU4QzE1LjkzOCAxOS4yNTU4IDE0Ljk0NTcgMTkuNTAzOSAxMy41ODE0IDIwQzEyLjIxNzEgMjAuNDk2MSAxMC44NTI3IDIwLjc0NDIgOS40ODgzNyAyMC43NDQyQzYuODgzNzIgMjAuNzQ0MiA0LjY1MTE2IDE5LjgxNCAyLjc5MDcgMTcuOTUzNUMwLjkzMDIzMyAxNi4wOTMgMCAxMy44Mjk1IDAgMTEuMTYyOEMwIDguMTg2MDUgMS4xNzgyOSA1LjU4MTQgMy41MzQ4OCAzLjM0ODg0QzUuOTUzNDkgMS4xMTYyOCA4Ljg2ODIyIDAgMTIuMjc5MSAwQzE2LjM3MjEgMCAyMC4wNjIgMS43Njc0NCAyMy4zNDg4IDUuMzAyMzNDMjYuNjk3NyA4LjgzNzIxIDI4LjM3MjEgMTMuMzAyMyAyOC4zNzIxIDE4LjY5NzdDMjguMzcyMSAyNS4yMDkzIDI2LjI2MzYgMzEuMTYyOCAyMi4wNDY1IDM2LjU1ODFDMTcuODkxNSA0MS45NTM1IDEyLjAzMSA0NS43Njc0IDQuNDY1MTIgNDhaTTQ4LjgzNzIgNDhWNDQuMDkzQzU0LjIzMjYgNDEuMzAyMyA1OC4xMDg1IDM4LjM1NjYgNjAuNDY1MSAzNS4yNTU4QzYyLjg4MzcgMzIuMDkzIDY0LjA5MyAyOC42ODIyIDY0LjA5MyAyNS4wMjMzQzY0LjA5MyAyMi44NTI3IDYzLjc4MyAyMS4zMzMzIDYzLjE2MjggMjAuNDY1MUM2Mi41NDI2IDE5LjY1ODkgNjEuODYwNSAxOS4yNTU4IDYxLjExNjMgMTkuMjU1OEM2MC4zMTAxIDE5LjI1NTggNTkuMjI0OCAxOS41MDM5IDU3Ljg2MDUgMjBDNTYuNDM0MSAyMC40OTYxIDU1LjE5MzggMjAuNzQ0MiA1NC4xMzk1IDIwLjc0NDJDNTEuNTk2OSAyMC43NDQyIDQ5LjM2NDMgMTkuNzgyOSA0Ny40NDE5IDE3Ljg2MDVDNDUuNTgxNCAxNS45MzggNDQuNjUxMiAxMy42NDM0IDQ0LjY1MTIgMTAuOTc2N0M0NC42NTEyIDggNDUuNzk4NSA1LjQyNjM2IDQ4LjA5MyAzLjI1NTgxQzUwLjM4NzYgMS4wODUyNyA1My4yMDkzIDAgNTYuNTU4MSAwQzYwLjc3NTIgMCA2NC41NTgxIDEuODI5NDYgNjcuOTA3IDUuNDg4MzdDNzEuMjU1OCA5LjA4NTI3IDcyLjkzMDIgMTMuNTE5NCA3Mi45MzAyIDE4Ljc5MDdDNzIuOTMwMiAyNC45OTIyIDcwLjg1MjcgMzAuNzkwNyA2Ni42OTc3IDM2LjE4NkM2Mi42MDQ3IDQxLjUxOTQgNTYuNjUxMiA0NS40NTc0IDQ4LjgzNzIgNDhaIi8+PC9zdmc+'));
+  aspect-ratio: var(--quote-aspect, 1.52);
+  background-repeat: no-repeat;
+  background-size: contain;
   display: block;
-  margin-bottom: 6px;
 }
 
-.customer-reviews__text {
-  font-family: var(--font-body-family, "Montserrat", sans-serif);
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: #103f5a;
-  margin: 0 0 16px;
-  flex-grow: 1;
+.jdgm-testimonials-carousel .jdgm-text {
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: var(--text-size, 24px);
+  color: var(--text-color, #103f5a);
+  line-height: 1.4;
+  font-weight: 400;
+  max-width: 100%;
+  display: block;
+  text-align: center;
 }
 
-.customer-reviews__card-footer {
+.jdgm-testimonials-carousel .jdgm-text p {
+  margin: 0;
+  line-height: 1.4;
+  color: var(--text-color, #103f5a);
+}
+
+.jdgm-testimonials-carousel .jdgm-rating-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.jdgm-testimonials-carousel .jdgm-rating-section .jdgm-stars {
+  display: flex;
+  gap: 4px;
+}
+
+.jdgm-testimonials-carousel .jdgm-rating-section .jdgm-star {
+  font-size: var(--stars-size, 24px);
+  color: var(--stars-color, #e7be27);
+  padding: 0 !important;
+}
+
+.jdgm-testimonials-carousel .jdgm-reviewer-info {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid #e8e3d8;
-  padding-top: 12px;
-  margin-top: 8px;
+  gap: 6px;
+  justify-content: center;
+  width: 100%;
 }
 
-.card-stars {
-  color: #e7be27;
-  font-size: 14px;
-  letter-spacing: 1px;
-}
-
-.customer-reviews__author {
-  font-family: var(--font-heading-family, "Montserrat", sans-serif);
-  font-size: 13px;
+.jdgm-testimonials-carousel .jdgm-reviewer-name {
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 16px;
   font-weight: 600;
-  color: #103f5a;
-  margin: 0;
-}
-
-.customer-reviews__product {
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px dashed #eee;
-}
-
-.customer-reviews__product a {
-  font-size: 11.5px;
-  color: #716d67;
-  text-decoration: none;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  color: var(--text-color, #103f5a);
+  line-height: 1.5;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.customer-reviews__product a:hover {
-  color: #103f5a;
+.jdgm-testimonials-carousel .jdgm-reviewer-verified-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  color: #3eb2a2;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2020%2020%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%3E%3Cpath%20d%3D%22M8.9375%2010.875L7.6875%209.64583C7.53472%209.49306%207.36111%209.41667%207.16667%209.41667C6.97222%209.41667%206.79861%209.49306%206.64583%209.64583C6.49306%209.79861%206.41667%209.97569%206.41667%2010.1771C6.41667%2010.3785%206.49306%2010.5556%206.64583%2010.7083L8.41667%2012.4792C8.56944%2012.6319%208.74306%2012.7083%208.9375%2012.7083C9.13194%2012.7083%209.30556%2012.6319%209.45833%2012.4792L13.3542%208.58333C13.5069%208.43056%2013.5833%208.25347%2013.5833%208.05208C13.5833%207.85069%2013.5069%207.67361%2013.3542%207.52083C13.2014%207.36806%2013.0278%207.29167%2012.8333%207.29167C12.6389%207.29167%2012.4653%207.36806%2012.3125%207.52083L8.9375%2010.875ZM10%2018C8.90278%2018%207.86806%2017.7917%206.89583%2017.375C5.92361%2016.9583%205.07292%2016.3854%204.34375%2015.6562C3.61458%2014.9271%203.04167%2014.0764%202.625%2013.1042C2.20833%2012.1319%202%2011.0972%202%2010C2%208.88889%202.20833%207.85069%202.625%206.88542C3.04167%205.92014%203.61458%205.07292%204.34375%204.34375C5.07292%203.61458%205.92361%203.04167%206.89583%202.625C7.86806%202.20833%208.90278%202%2010%202C11.1111%202%2012.1493%202.20833%2013.1146%202.625C14.0799%203.04167%2014.9271%203.61458%2015.6562%204.34375%2016.3854%205.07292%2016.9583%205.92014%2017.375%206.88542C17.7917%207.85069%2018%208.88889%2018%2010C18%2011.0972%2017.7917%2012.1319%2017.375%2013.1042C16.9583%2014.0764%2016.3854%2014.9271%2015.6562%2015.6562C14.9271%2016.3854%2014.0799%2016.9583%2013.1146%2017.375C12.1493%2017.7917%2011.1111%2018%2010%2018Z%22%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2020%2020%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%3E%3Cpath%20d%3D%22M8.9375%2010.875L7.6875%209.64583C7.53472%209.49306%207.36111%209.41667%207.16667%209.41667C6.97222%209.41667%206.79861%209.49306%206.64583%209.64583C6.49306%209.79861%206.41667%209.97569%206.41667%2010.1771C6.41667%2010.3785%206.49306%2010.5556%206.64583%2010.7083L8.41667%2012.4792C8.56944%2012.6319%208.74306%2012.7083%208.9375%2012.7083C9.13194%2012.7083%209.30556%2012.6319%209.45833%2012.4792L13.3542%208.58333C13.5069%208.43056%2013.5833%208.25347%2013.5833%208.05208C13.5833%207.85069%2013.5069%207.67361%2013.3542%207.52083C13.2014%207.36806%2013.0278%207.29167%2012.8333%207.29167C12.6389%207.29167%2012.4653%207.36806%2012.3125%207.52083L8.9375%2010.875ZM10%2018C8.90278%2018%207.86806%2017.7917%206.89583%2017.375C5.92361%2016.9583%205.07292%2016.3854%204.34375%2015.6562C3.61458%2014.9271%203.04167%2014.0764%202.625%2013.1042C2.20833%2012.1319%202%2011.0972%202%2010C2%208.88889%202.20833%207.85069%202.625%206.88542C3.04167%205.92014%203.61458%205.07292%204.34375%204.34375C5.07292%203.61458%205.92361%203.04167%206.89583%202.625C7.86806%202.20833%208.90278%202%2010%202C11.1111%202%2012.1493%202.20833%2013.1146%202.625C14.0799%203.04167%2014.9271%203.61458%2015.6562%204.34375%2016.3854%205.07292%2016.9583%205.92014%2017.375%206.88542C17.7917%207.85069%2018%208.88889%2018%2010C18%2011.0972%2017.7917%2012.1319%2017.375%2013.1042C16.9583%2014.0764%2016.3854%2014.9271%2015.6562%2015.6562C14.9271%2016.3854%2014.0799%2016.9583%2013.1146%2017.375C12.1493%2017.7917%2011.1111%2018%2010%2018Z%22%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+}
+
+.jdgm-testimonials-carousel .jdgm-product-name {
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: var(--product-name-size, 16px);
+  color: var(--text-color, #103f5a);
   text-decoration: underline;
+  text-decoration-skip-ink: none;
+  font-weight: 400;
+  text-align: center;
+  width: 510px;
+  max-width: 100%;
+}
+
+.jdgm-testimonials-carousel .jdgm-product-name a {
+  color: var(--text-color, #103f5a);
+}
+
+.jdgm-testimonials-carousel .jdgm-arrows--bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.jdgm-testimonials-carousel .jdgm-arrow {
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--arrows-color, #000000);
+  transition: opacity .2s;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.jdgm-testimonials-carousel .jdgm-arrow:hover {
+  opacity: .7;
+}
+
+.jdgm-testimonials-carousel .jdgm-arrow svg {
+  width: 20px;
+  height: 34px;
+  stroke: currentColor;
 }
 
 @media (max-width: 768px) {
   .customer-reviews-section {
-    padding: 32px 0;
+    padding: 30px 16px 40px;
   }
-  .customer-reviews__card {
-    flex: 0 0 80vw;
+  .jdgm-testimonials-carousel .jdgm-card {
+    padding: 24px;
+  }
+  .jdgm-testimonials-carousel .jdgm-card-content {
+    gap: 16px;
+  }
+  .jdgm-testimonials-carousel .jdgm-title {
+    font-size: 24px;
+  }
+  .jdgm-testimonials-carousel .jdgm-text {
+    font-size: var(--text-size-mobile, 18px);
+  }
+  .jdgm-testimonials-carousel .jdgm-product-name {
+    width: 100%;
+    font-size: 14px;
+  }
+  .jdgm-testimonials-carousel .jdgm-header-info {
+    flex-direction: column;
+    gap: 8px;
   }
 }

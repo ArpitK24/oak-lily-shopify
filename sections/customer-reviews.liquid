@@ -4,63 +4,355 @@
 <div
   class="customer-reviews-section full-width"
   role="region"
-  aria-label="{{ section.settings.heading | default: 'Customer reviews' | escape }}"
+  aria-label="{{ section.settings.heading | default: 'Hear It From Our Happy Clients' | escape }}"
 >
-  <div class="customer-reviews__container">
-    <div class="customer-reviews__header">
-      <h2 class="customer-reviews__title">
+  <div
+    class="jdgm-widget jdgm-testimonials-carousel"
+    data-jdgm-block-id="AeTJCWkQwUTdDRExoc__judge_me_reviews_testimonials_carousel_38XeVA"
+    role="region"
+    aria-roledescription="carousel"
+    aria-label="Customer reviews"
+    data-widget="testimonials-carousel"
+    data-has-revamp="1"
+    style="--max-width: 1100px; --text-color: #103f5a; --card-color: #f8f4ef; --border-radius: 8px; --border: none; --box-shadow: 0px 0px 40px 0px #D0D0D0; --quote-size: 24px; --quote-aspect: 1.52; --text-size: 24px; --text-size-mobile: 20px; --line-clamp: 3; --line-clamp-mobile: 4; --stars-size: 24px; --stars-color: #e7be27; --product-name-size: 16px; --arrows-color: #000000; --slides-count: 20;"
+  >
+    <div class="jdgm-header">
+      <h2 class="jdgm-title">
         {{ section.settings.heading | default: 'Hear It From Our Happy Clients' | escape }}
       </h2>
 
-      <div class="customer-reviews__meta">
-        <div class="customer-reviews__rating">
-          <div class="customer-reviews__stars" aria-label="5 out of 5 stars">
-            {%- for i in (1..5) -%}
-              <span class="star-icon">★</span>
-            {%- endfor -%}
+      <div class="jdgm-header-info">
+        <div class="jdgm-average-rating">
+          <div class="jdgm-stars" role="img" aria-label="4.7 out of 5 stars">
+            <span class="jdgm-star jdgm--on" aria-hidden="true"></span>
+            <span class="jdgm-star jdgm--on" aria-hidden="true"></span>
+            <span class="jdgm-star jdgm--on" aria-hidden="true"></span>
+            <span class="jdgm-star jdgm--on" aria-hidden="true"></span>
+            <span class="jdgm-star jdgm--half" aria-hidden="true"></span>
           </div>
-          <span class="customer-reviews__score">
-            {{ section.settings.rating_text | default: '4.70' }} ★ ({{ section.settings.reviews_count | default: '319' }})
+          <span class="jdgm-rating-text">
+            {{ section.settings.rating_text | default: '4.70' }} <span class="jdgm-rating-star">★</span> (
+            <span class="jdgm-reviews-count">{{ section.settings.reviews_count | default: '319' }}</span>)
           </span>
         </div>
 
-        <div class="customer-reviews__verified-badge">
-          <svg class="verified-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-            <path fill="currentColor" d="M1.14 0C.51 0 0 .51 0 1.14v17.72C0 19.49.51 20 1.14 20h17.72c.63 0 1.14-.51 1.14-1.14V11.37c0-.36-.44-.54-.69-.28l-3.95 4.12c-1.69 1.76-3.45 2.64-5.29 2.63-1.82 0-3.55-.82-5.19-2.45-1.74-1.74-2.65-3.63-2.75-5.66-.07-1.88.66-3.69 2.2-5.44.2-.22.53-.22.74-.01l3.47 3.47c.21.21.21.54.03.77-.84 1.07-.87 1.99-.1 2.77.78.78 1.66.67 2.62-.34L19.89 1.78c.07-.07.11-.17.11-.28V1.14C20 .51 19.49 0 18.86 0H1.14Z"/>
+        <div class="jdgm-verified-badge-header">
+          <svg class="jdgm-verified-checkmark" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+            <path d="M1.14026 0C0.510511 0 0 0.510511 0 1.14026V18.8599C0 19.4896 0.510511 20.0001 1.14026 20.0001H18.8597C19.4895 20.0001 20 19.4896 20 18.8599V11.3685C20 11.008 19.5606 10.8315 19.3112 11.0918L15.3614 15.2135C13.6736 16.9747 11.912 17.8504 10.0763 17.8407C8.25519 17.8454 6.52568 17.0288 4.8878 15.391C3.14847 13.6516 2.23211 11.7644 2.13874 9.72917C2.06539 7.84992 2.79892 6.0381 4.33936 4.29371C4.5345 4.07273 4.86976 4.0698 5.07804 4.27808L8.5462 7.74623C8.75271 7.95274 8.75486 8.28861 8.57448 8.51907C7.73628 9.59004 7.70456 10.5129 8.47933 11.2877C9.26203 12.0704 10.1356 11.9585 11.1 10.9521L19.8888 1.78078C19.9602 1.70632 20 1.60716 20 1.50403V1.14026C20 0.510511 19.4895 0 18.8597 0H1.14026Z"/>
           </svg>
-          <span>Verified</span>
+          <span class="jdgm-verified-text">Verified</span>
         </div>
       </div>
     </div>
 
-    <div class="customer-reviews__carousel-track" role="list">
-      {%- if section.blocks.size > 0 -%}
-        {%- for block in section.blocks -%}
-          {%- assign product = block.settings.product -%}
-          <div class="customer-reviews__card" role="listitem" {{ block.shopify_attributes }}>
-            <div class="customer-reviews__card-inner">
-              <span class="quote-mark" aria-hidden="true">“</span>
-              <p class="customer-reviews__text">{{ block.settings.review_text | escape }}</p>
+    <div class="jdgm-content">
+      <div class="jdgm-testimonials-container">
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            {%- assign product = block.settings.product -%}
+            <div
+              class="jdgm-card jdgm-testimonial jdgm-carousel-item{% if forloop.first %} active{% endif %}"
+              data-card-index="{{ forloop.index0 }}"
+              {{ block.shopify_attributes }}
+            >
+              <div class="jdgm-card-content">
+                <i class="jdgm-quote-marks" aria-hidden="true"></i>
+                <div class="jdgm-text"><p>{{ block.settings.review_text | escape }}</p></div>
 
-              <div class="customer-reviews__card-footer">
-                <div class="card-stars">
-                  {%- assign rating_val = block.settings.rating | default: 5 -%}
-                  {%- for i in (1..rating_val) -%}
-                    <span class="star-on">★</span>
-                  {%- endfor -%}
+                <div class="jdgm-rating-section">
+                  <div class="jdgm-stars">
+                    {%- assign rating_val = block.settings.rating | default: 5 -%}
+                    {%- for i in (1..5) -%}
+                      {%- if i <= rating_val -%}
+                        <span class="jdgm-star jdgm--on"></span>
+                      {%- else -%}
+                        <span class="jdgm-star jdgm--off"></span>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                  <div class="jdgm-reviewer-info">
+                    <span class="jdgm-reviewer-name">{{ block.settings.author | escape }}</span>
+                    <span class="jdgm-reviewer-verified-icon"></span>
+                  </div>
                 </div>
-                <p class="customer-reviews__author">{{ block.settings.author | escape }}</p>
+
+                {%- if product != blank -%}
+                  <div class="jdgm-product-name">
+                    <a href="{{ product.url }}">{{ product.title | escape }}</a>
+                  </div>
+                {%- elsif block.settings.product_title != blank -%}
+                  <div class="jdgm-product-name">
+                    <span>{{ block.settings.product_title | escape }}</span>
+                  </div>
+                {%- endif -%}
               </div>
-
-              {%- if product != blank -%}
-                <div class="customer-reviews__product">
-                  <a href="{{ product.url }}">{{ product.title | escape }}</a>
-                </div>
-              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item active" data-card-index="0">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>I recently received the cushion covers and throw from Oak and Lily, and I’m really pleased with them. The cushion covers are beautifully made, with a lovely design and soft, good-quality fabric. They add a stylish and cosy touch to my space. The throw is equally beautiful, comfortable, and perfect for adding warmth and texture to the room. Overall, I’m very happy with the quality and finish of the products and would definitely recommend Oak and Lily.</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Mona Singh</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/oak-lily-100-cotton-green-sofa-throw-blanket-50x60-inches-soft-breathable-decorative-couch-throw-with-hand-knotted-tassels-lightweight-for-sofa-bed-travel">Oak &amp; Lily 100% Cotton Sofa Throw Blanket (50x60 Inches) – Soft &amp; Breathable Decorative Throw | Lightweight for Sofa, Bed &amp; Travel | Rust Stripe</a></div>
             </div>
           </div>
-        {%- endfor -%}
-      {%- endif -%}
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="1">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>Table cloth size colour and fabric is really nice</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Nidhi Marwah</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/yellow-grey-ethnic-print-6-seater-table-cloth">Oak &amp; Lily Table Cloth – Yellow &amp; Grey Ethnic Print | 100% Cotton | Anti-Slip | Premium European Quality | Dining Table Cover</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="2">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>Lovely colours</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Anonymous</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/lemonyellow-kitchen-napkins">Lemon Yellow Print Kitchen Napkins | Set of 3</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="3">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>Good</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--off"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Anonymous</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/peach-pink-kitchen-napkins">Peach Print Kitchen Napkins | Set of 3</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="4">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>Beautiful print and good fabric</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Mamta Kumar</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/oak-lily-table-cloth-for-centre-coffee-tables-in-zesty-yellow-lemon-print-100-x-140-cm">Oak &amp; Lily Table Cloth – Zesty Yellow Lemon Print | 100% Cotton | Anti-Slip | Premium European Quality</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="5">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>Very pretty, material soft, classy look</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Ritu Agarwal</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/lemonyellow-kitchen-napkins">Lemon Yellow Print Kitchen Napkins | Set of 3</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="6">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>Very good quality just looks just like the image</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Lopa</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/lemonyellow-kitchen-napkins">Lemon Yellow Print Kitchen Napkins | Set of 3</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="7">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>Disappointed with the size</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--off"></span><span class="jdgm-star jdgm--off"></span><span class="jdgm-star jdgm--off"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Anonymous</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/lemonyellow-kitchen-napkins">Lemon Yellow Print Kitchen Napkins | Set of 3</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="8">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>Excellent quality<br>Very friendly customer service by team.</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Jaya Ravi Kumar</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/lemonyellow-kitchen-napkins">Lemon Yellow Print Kitchen Napkins | Set of 3</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="9">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>The coffee table cover is absolutely beautiful and elegant. The quality is really good, and it adds a lovely, classy touch to my home decor. I’m very happy with the product and would definitely recommend it. ✨🤍</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Kabita Garai</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/yellow-grey-ethnic-print-6-seater-table-cloth">Oak &amp; Lily Table Cloth – Yellow &amp; Grey Ethnic Print | 100% Cotton | Anti-Slip | Premium European Quality | Dining Table Cover</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="10">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>Good quality product</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Anonymous</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/ivory-beige-leaf-print-table-runner">Oak &amp; Lily Table Runner – Ivory &amp; Beige Leaf Print | 100% Cotton | Premium European Quality</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="11">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>Very nice material and print.</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--off"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Sharmila</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/yellow-lemon-print-apron">Lemon Yellow Print Apron</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="12">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>Very pretty designs and good quality. I ordered many sets as Christmas and Birthday gifts. I am satisfied and happy with my purchase.</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Flavia</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/set-of-3-kitchen-towels-sage-green">Sage Green Print Kitchen Napkins | Set of 3</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="13">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>Very good product</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Kalpana pillay</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/lemonyellow-kitchen-napkins">Lemon Yellow Print Kitchen Napkins | Set of 3</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="14">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>Excellent cotton quality...liked it v much</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Divya Sinha</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/sage-green-stripe-print-apron">Green Stripe Print Apron</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="15">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>I am so happy with the kitchen linen (quality &amp; design). I've repurposed the kitchen towels and placements as covers for my kitchen appliances and my kitchen looks so much better and put together. Love that you have collections with design consistencies, makes my life so easy to shop!! Keep up the amazing product line !!! :)</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Kavya</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/oak-lily-placemats-lemon-yellow-print-100-cotton-heat-resistant-premium-european-quality">Oak &amp; Lily Placemats – Lemon Yellow Print | 100% Cotton | Heat Resistant | Premium European Quality</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="16">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>The fabric quality is really good. Made of good-quality cotton, the kitchen towel is thick, durable, and absorbent. Overall, a great purchase!</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Dr.Gunjan</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/lemonyellow-kitchen-napkins">Lemon Yellow Print Kitchen Napkins | Set of 3</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="17">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>am so pleased to have all these bright and lively pieces</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">minnie</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/set-of-3-kitchen-towels-beach-house">Beach House Print Kitchen Napkins | Set of 3</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="18">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>A beautiful table cloth. Same as shown in image. Good quality and is pleasingly aesthetic. It turned around the beauty of our small dining table.</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Madhu</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/oak-lily-table-cloth-for-6-seater-yellow-white-check-print">Oak &amp; Lily Table Cloth – Yellow &amp; White Check Print | 100% Cotton | Anti-Slip | Premium European Quality</a></div>
+            </div>
+          </div>
+
+          <div class="jdgm-card jdgm-testimonial jdgm-carousel-item" data-card-index="19">
+            <div class="jdgm-card-content">
+              <i class="jdgm-quote-marks" aria-hidden="true"></i>
+              <div class="jdgm-text"><p>Prints and material are both very good. Apart from personal use I shall be gifting them too.</p></div>
+              <div class="jdgm-rating-section">
+                <div class="jdgm-stars"><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></div>
+                <div class="jdgm-reviewer-info"><span class="jdgm-reviewer-name">Jyoti</span><span class="jdgm-reviewer-verified-icon"></span></div>
+              </div>
+              <div class="jdgm-product-name"><a href="/products/peach-pink-kitchen-napkins">Peach Print Kitchen Napkins | Set of 3</a></div>
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="jdgm-arrows--bottom">
+      <button
+        type="button"
+        class="jdgm-arrow"
+        aria-label="Previous slide"
+        onclick="window.jdgmPreviousCard &amp;&amp; window.jdgmPreviousCard()"
+      >
+        <svg viewBox="0 0 20 34" aria-hidden="true" focusable="false">
+          <path d="M16 6L6 17L16 28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="jdgm-arrow"
+        aria-label="Next slide"
+        onclick="window.jdgmNextCard &amp;&amp; window.jdgmNextCard()"
+      >
+        <svg viewBox="0 0 20 34" aria-hidden="true" focusable="false">
+          <path d="M4 6L14 17L4 28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </button>
     </div>
   </div>
 </div>
@@ -117,6 +409,12 @@
           "label": "Star rating"
         },
         {
+          "type": "text",
+          "id": "product_title",
+          "label": "Product name (text)",
+          "default": "Oak & Lily 100% Cotton Sofa Throw Blanket"
+        },
+        {
           "type": "product",
           "id": "product",
           "label": "Reviewed product (optional)"
@@ -126,44 +424,7 @@
   ],
   "presets": [
     {
-      "name": "Customer reviews",
-      "blocks": [
-        {
-          "type": "review",
-          "settings": {
-            "author": "Mona Singh",
-            "review_text": "I recently received the cushion covers and throw from Oak and Lily, and I’m really pleased with them. The cushion covers are beautifully made, with a lovely design and soft, good-quality fabric. They add a stylish and cosy touch to my space."
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "author": "Nidhi Marwah",
-            "review_text": "Table cloth size colour and fabric is really nice. Excellent finish and looks just like the pictures. Will definitely buy again."
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "author": "Mamta Kumar",
-            "review_text": "Beautiful print and good fabric. The table runner added so much warmth and charm to our dining area."
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "author": "Ritu Agarwal",
-            "review_text": "Very pretty, material soft, classy look. Quality is exceptional and stitching is super neat."
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "author": "Jaya Ravi Kumar",
-            "review_text": "Excellent quality. Very friendly customer service by team. The bedsheets are 100% pure cotton and super comfortable."
-          }
-        }
-      ]
+      "name": "Customer reviews"
     }
   ]
 }

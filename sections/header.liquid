@@ -27,7 +27,7 @@
 
         <nav class="menu-drawer__nav" role="navigation">
           <ul class="menu-drawer__menu" role="list">
-            {%- if nav_menu != blank and nav_menu.size > 0 -%}
+            {%- if nav_menu != blank and nav_menu.size > 3 -%}
               {%- for link in nav_menu -%}
                 <li class="menu-drawer__item">
                   {%- if link.links != blank -%}
@@ -54,12 +54,70 @@
                 </li>
               {%- endfor -%}
             {%- else -%}
+              <li class="menu-drawer__item"><a href="/" class="menu-drawer__link">HOME</a></li>
+              <li class="menu-drawer__item"><a href="/pages/our-story" class="menu-drawer__link">OUR STORY</a></li>
               <li class="menu-drawer__item">
-                <a href="{{ routes.root_url }}" class="menu-drawer__link">HOME</a>
+                <details class="menu-drawer__details">
+                  <summary class="menu-drawer__link"><span>KITCHEN LINENS</span>{% render 'icon-caret' %}</summary>
+                  <ul class="menu-drawer__submenu" role="list">
+                    <li><a href="/collections/aprons" class="menu-drawer__sublink">APRONS</a></li>
+                    <li><a href="/collections/mittens" class="menu-drawer__sublink">MITTENS</a></li>
+                    <li><a href="/collections/kitchen-napkins" class="menu-drawer__sublink">KITCHEN NAPKINS</a></li>
+                    <li><a href="/collections/pot-holders" class="menu-drawer__sublink">POT HOLDERS</a></li>
+                    <li><a href="/collections/kitechen-gifts" class="menu-drawer__sublink">KITCHEN GIFTS</a></li>
+                    <li><a href="/collections/kitechen-combos" class="menu-drawer__sublink">KITCHEN COMBOS</a></li>
+                    <li><a href="/collections/kitchen-linens" class="menu-drawer__sublink">ALL</a></li>
+                  </ul>
+                </details>
               </li>
               <li class="menu-drawer__item">
-                <a href="{{ routes.all_products_collection_url }}" class="menu-drawer__link">CATALOG</a>
+                <details class="menu-drawer__details">
+                  <summary class="menu-drawer__link"><span>TABLE LINENS</span>{% render 'icon-caret' %}</summary>
+                  <ul class="menu-drawer__submenu" role="list">
+                    <li><a href="/collections/table-runners" class="menu-drawer__sublink">TABLE RUNNERS</a></li>
+                    <li><a href="/collections/table-covers" class="menu-drawer__sublink">TABLE COVERS</a></li>
+                    <li><a href="/collections/placemats" class="menu-drawer__sublink">PLACEMATS</a></li>
+                    <li><a href="/collections/table-gifts" class="menu-drawer__sublink">TABLE GIFTS</a></li>
+                    <li><a href="/collections/table-combos" class="menu-drawer__sublink">TABLE COMBOS</a></li>
+                    <li><a href="/collections/table-linens" class="menu-drawer__sublink">ALL</a></li>
+                  </ul>
+                </details>
               </li>
+              <li class="menu-drawer__item">
+                <details class="menu-drawer__details">
+                  <summary class="menu-drawer__link"><span>BED LINENS</span>{% render 'icon-caret' %}</summary>
+                  <ul class="menu-drawer__submenu" role="list">
+                    <li><a href="/collections/king-flat-sheets" class="menu-drawer__sublink">KING FLAT SHEETS</a></li>
+                    <li><a href="/collections/queen-flat-sheets" class="menu-drawer__sublink">QUEEN FLAT SHEETS</a></li>
+                    <li><a href="/collections/king-fitted-sheets" class="menu-drawer__sublink">KING FITTED SHEETS</a></li>
+                    <li><a href="/collections/bed-linens" class="menu-drawer__sublink">ALL</a></li>
+                  </ul>
+                </details>
+              </li>
+              <li class="menu-drawer__item">
+                <details class="menu-drawer__details">
+                  <summary class="menu-drawer__link"><span>LIVING SPACES</span>{% render 'icon-caret' %}</summary>
+                  <ul class="menu-drawer__submenu" role="list">
+                    <li><a href="/collections/throw" class="menu-drawer__sublink">THROWS</a></li>
+                    <li><a href="/collections/beach-towels" class="menu-drawer__sublink">BEACH TOWELS</a></li>
+                    <li><a href="/collections/cushion-covers" class="menu-drawer__sublink">CUSHION COVERS</a></li>
+                    <li><a href="/collections/living-space" class="menu-drawer__sublink">ALL</a></li>
+                  </ul>
+                </details>
+              </li>
+              <li class="menu-drawer__item">
+                <details class="menu-drawer__details">
+                  <summary class="menu-drawer__link"><span>GIFTS</span>{% render 'icon-caret' %}</summary>
+                  <ul class="menu-drawer__submenu" role="list">
+                    <li><a href="/collections/gift-cards" class="menu-drawer__sublink">GIFT CARDS</a></li>
+                    <li><a href="/collections/gift-collections" class="menu-drawer__sublink">GIFT COLLECTIONS</a></li>
+                    <li><a href="/collections/spring-sales" class="menu-drawer__sublink">SPRING SALES</a></li>
+                    <li><a href="/collections" class="menu-drawer__sublink">SHOP ALL</a></li>
+                  </ul>
+                </details>
+              </li>
+              <li class="menu-drawer__item"><a href="/bundle" class="menu-drawer__link">BUILD YOUR BUNDLE</a></li>
+              <li class="menu-drawer__item"><a href="/blogs/news" class="menu-drawer__link">BLOGS</a></li>
             {%- endif -%}
           </ul>
         </nav>
@@ -91,7 +149,7 @@
     {% comment %} Desktop Inline Navigation {% endcomment %}
     <nav class="header__inline-menu" role="navigation">
       <ul class="list-menu list-menu--inline" role="list">
-        {%- if nav_menu != blank and nav_menu.size > 0 -%}
+        {%- if nav_menu != blank and nav_menu.size > 3 -%}
           {%- for link in nav_menu -%}
             <li>
               {%- if link.links != blank -%}
@@ -124,16 +182,70 @@
             </li>
           {%- endfor -%}
         {%- else -%}
+          <li><a href="/" class="header__menu-item link focus-inset is-active"><span>HOME</span></a></li>
+          <li><a href="/pages/our-story" class="header__menu-item link focus-inset"><span>OUR STORY</span></a></li>
           <li>
-            <a href="{{ routes.root_url }}" class="header__menu-item link focus-inset is-active">
-              <span>HOME</span>
-            </a>
+            <details id="Details-HeaderMenu-3" class="header__menu-details">
+              <summary class="header__menu-item link focus-inset"><span>KITCHEN LINENS</span>{% render 'icon-caret' %}</summary>
+              <ul id="HeaderMenu-MenuList-3" class="header__submenu" role="list">
+                <li><a href="/collections/aprons">APRONS</a></li>
+                <li><a href="/collections/mittens">MITTENS</a></li>
+                <li><a href="/collections/kitchen-napkins">KITCHEN NAPKINS</a></li>
+                <li><a href="/collections/pot-holders">POT HOLDERS</a></li>
+                <li><a href="/collections/kitechen-gifts">KITCHEN GIFTS</a></li>
+                <li><a href="/collections/kitechen-combos">KITCHEN COMBOS</a></li>
+                <li><a href="/collections/kitchen-linens">ALL</a></li>
+              </ul>
+            </details>
           </li>
           <li>
-            <a href="{{ routes.all_products_collection_url }}" class="header__menu-item link focus-inset">
-              <span>CATALOG</span>
-            </a>
+            <details id="Details-HeaderMenu-4" class="header__menu-details">
+              <summary class="header__menu-item link focus-inset"><span>TABLE LINENS</span>{% render 'icon-caret' %}</summary>
+              <ul id="HeaderMenu-MenuList-4" class="header__submenu" role="list">
+                <li><a href="/collections/table-runners">TABLE RUNNERS</a></li>
+                <li><a href="/collections/table-covers">TABLE COVERS</a></li>
+                <li><a href="/collections/placemats">PLACEMATS</a></li>
+                <li><a href="/collections/table-gifts">TABLE GIFTS</a></li>
+                <li><a href="/collections/table-combos">TABLE COMBOS</a></li>
+                <li><a href="/collections/table-linens">ALL</a></li>
+              </ul>
+            </details>
           </li>
+          <li>
+            <details id="Details-HeaderMenu-5" class="header__menu-details">
+              <summary class="header__menu-item link focus-inset"><span>BED LINENS</span>{% render 'icon-caret' %}</summary>
+              <ul id="HeaderMenu-MenuList-5" class="header__submenu" role="list">
+                <li><a href="/collections/king-flat-sheets">KING FLAT SHEETS</a></li>
+                <li><a href="/collections/queen-flat-sheets">QUEEN FLAT SHEETS</a></li>
+                <li><a href="/collections/king-fitted-sheets">KING FITTED SHEETS</a></li>
+                <li><a href="/collections/bed-linens">ALL</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details id="Details-HeaderMenu-6" class="header__menu-details">
+              <summary class="header__menu-item link focus-inset"><span>LIVING SPACES</span>{% render 'icon-caret' %}</summary>
+              <ul id="HeaderMenu-MenuList-6" class="header__submenu" role="list">
+                <li><a href="/collections/throw">THROWS</a></li>
+                <li><a href="/collections/beach-towels">BEACH TOWELS</a></li>
+                <li><a href="/collections/cushion-covers">CUSHION COVERS</a></li>
+                <li><a href="/collections/living-space">ALL</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details id="Details-HeaderMenu-7" class="header__menu-details">
+              <summary class="header__menu-item link focus-inset"><span>GIFTS</span>{% render 'icon-caret' %}</summary>
+              <ul id="HeaderMenu-MenuList-7" class="header__submenu" role="list">
+                <li><a href="/collections/gift-cards">GIFT CARDS</a></li>
+                <li><a href="/collections/gift-collections">GIFT COLLECTIONS</a></li>
+                <li><a href="/collections/spring-sales">SPRING SALES</a></li>
+                <li><a href="/collections">SHOP ALL</a></li>
+              </ul>
+            </details>
+          </li>
+          <li><a href="/bundle" class="header__menu-item link focus-inset"><span>BUILD YOUR BUNDLE</span></a></li>
+          <li><a href="/blogs/news" class="header__menu-item link focus-inset"><span>BLOGS</span></a></li>
         {%- endif -%}
       </ul>
     </nav>

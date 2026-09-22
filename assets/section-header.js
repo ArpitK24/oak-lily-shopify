@@ -42,9 +42,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Close desktop dropdown details on outside click
+  // Desktop dropdown hover and outside click
   const dropdowns = document.querySelectorAll('.header__menu-details');
   if (dropdowns.length > 0) {
+    dropdowns.forEach((details) => {
+      details.addEventListener('mouseenter', () => {
+        if (window.innerWidth >= 990) {
+          details.setAttribute('open', '');
+        }
+      });
+      details.addEventListener('mouseleave', () => {
+        if (window.innerWidth >= 990) {
+          details.removeAttribute('open');
+        }
+      });
+    });
+
     document.addEventListener('click', (e) => {
       dropdowns.forEach((details) => {
         if (!details.contains(e.target)) {

@@ -1,54 +1,32 @@
 /**
- * Oak & Lily Customer Reviews carousel mouse drag & touch scroll
+ * Oak & Lily Authentic Judge.me Testimonials Carousel Script
+ * Five-second rotation, hover pause, prev/next arrows.
  */
 document.addEventListener('DOMContentLoaded', () => {
-  const tracks = document.querySelectorAll('.customer-reviews__carousel-track');
+  const root = document.querySelector('.jdgm-testimonials-carousel');
+  if (!root) return;
+  const cards = Array.from(root.querySelectorAll('.jdgm-card'));
+  if (cards.length === 0) return;
 
-  tracks.forEach((track) => {
-    let isDown = false;
-    let startX = 0;
-    let scrollLeft = 0;
-    let hasMoved = false;
-
-    track.addEventListener('mousedown', (e) => {
-      if (e.button !== 0) return;
-      isDown = true;
-      hasMoved = false;
-      startX = e.pageX - track.offsetLeft;
-      scrollLeft = track.scrollLeft;
-      track.style.cursor = 'grabbing';
-      track.style.userSelect = 'none';
-      track.style.scrollSnapType = 'none';
+  let index = 0;
+  const show = (n) => {
+    index = (n + cards.length) % cards.length;
+    cards.forEach((c, i) => {
+      c.classList.toggle('active', i === index);
+      c.setAttribute('aria-hidden', i === index ? 'false' : 'true');
     });
+  };
 
-    window.addEventListener('mouseup', () => {
-      if (!isDown) return;
-      isDown = false;
-      track.style.cursor = '';
-      track.style.removeProperty('user-select');
-      track.style.scrollSnapType = 'x mandatory';
-    });
+  window.jdgmPreviousCard = () => show(index - 1);
+  window.jdgmNextCard = () => show(index + 1);
 
-    track.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      const x = e.pageX - track.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      if (Math.abs(walk) > 5) {
-        hasMoved = true;
-      }
-      track.scrollLeft = scrollLeft - walk;
-    });
+  let timer = setInterval(window.jdgmNextCard, 5000);
 
-    track.addEventListener(
-      'click',
-      (e) => {
-        if (hasMoved) {
-          e.preventDefault();
-          e.stopPropagation();
-          hasMoved = false;
-        }
-      },
-      true
-    );
+  root.addEventListener('mouseenter', () => clearInterval(timer));
+  root.addEventListener('mouseleave', () => {
+    clearInterval(timer);
+    timer = setInterval(window.jdgmNextCard, 5000);
   });
+
+  show(0);
 });

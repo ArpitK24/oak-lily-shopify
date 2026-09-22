@@ -188,7 +188,8 @@
           "settings": {
             "author": "Mona Singh",
             "review_text": "I recently received the cushion covers and throw from Oak and Lily, and I’m really pleased with them. The cushion covers are beautifully made, with a lovely design and soft, good-quality fabric. They add a stylish and cosy touch to my space.",
-            "rating": 5
+            "rating": 5,
+            "product_title": "Oak & Lily 100% Cotton Sofa Throw Blanket"
           }
         },
         "review-2": {
@@ -196,7 +197,8 @@
           "settings": {
             "author": "Nidhi Marwah",
             "review_text": "Table cloth size colour and fabric is really nice. Excellent finish and looks just like the pictures. Will definitely buy again.",
-            "rating": 5
+            "rating": 5,
+            "product_title": "Oak & Lily Table Cloth – Yellow & Grey Ethnic Print"
           }
         },
         "review-3": {
@@ -204,7 +206,8 @@
           "settings": {
             "author": "Mamta Kumar",
             "review_text": "Beautiful print and good fabric. The table runner added so much warmth and charm to our dining area.",
-            "rating": 5
+            "rating": 5,
+            "product_title": "Oak & Lily Table Cloth – Zesty Yellow Lemon Print"
           }
         },
         "review-4": {
@@ -212,7 +215,8 @@
           "settings": {
             "author": "Ritu Agarwal",
             "review_text": "Very pretty, material soft, classy look. Quality is exceptional and stitching is super neat.",
-            "rating": 5
+            "rating": 5,
+            "product_title": "Lemon Yellow Print Kitchen Napkins | Set of 3"
           }
         },
         "review-5": {
@@ -220,7 +224,53 @@
           "settings": {
             "author": "Jaya Ravi Kumar",
             "review_text": "Excellent quality. Very friendly customer service by team. The bedsheets are 100% pure cotton and super comfortable.",
-            "rating": 5
+            "rating": 5,
+            "product_title": "Lemon Yellow Print Kitchen Napkins | Set of 3"
+          }
+        },
+        "review-6": {
+          "type": "review",
+          "settings": {
+            "author": "Kabita Garai",
+            "review_text": "The coffee table cover is absolutely beautiful and elegant. The quality is really good, and it adds a lovely, classy touch to my home decor. I’m very happy with the product and would definitely recommend it. ✨🤍",
+            "rating": 5,
+            "product_title": "Oak & Lily Table Cloth – Yellow & Grey Ethnic Print"
+          }
+        },
+        "review-7": {
+          "type": "review",
+          "settings": {
+            "author": "Flavia",
+            "review_text": "Very pretty designs and good quality. I ordered many sets as Christmas and Birthday gifts. I am satisfied and happy with my purchase.",
+            "rating": 5,
+            "product_title": "Sage Green Print Kitchen Napkins | Set of 3"
+          }
+        },
+        "review-8": {
+          "type": "review",
+          "settings": {
+            "author": "Kavya",
+            "review_text": "I am so happy with the kitchen linen (quality & design). Love that you have collections with design consistencies, makes my life so easy to shop!! Keep up the amazing product line !!! :)",
+            "rating": 5,
+            "product_title": "Oak & Lily Placemats – Lemon Yellow Print"
+          }
+        },
+        "review-9": {
+          "type": "review",
+          "settings": {
+            "author": "Madhu",
+            "review_text": "A beautiful table cloth. Same as shown in image. Good quality and is pleasingly aesthetic. It turned around the beauty of our small dining table.",
+            "rating": 5,
+            "product_title": "Oak & Lily Table Cloth – Yellow & White Check Print"
+          }
+        },
+        "review-10": {
+          "type": "review",
+          "settings": {
+            "author": "Jyoti",
+            "review_text": "Prints and material are both very good. Apart from personal use I shall be gifting them too.",
+            "rating": 5,
+            "product_title": "Peach Print Kitchen Napkins | Set of 3"
           }
         }
       },
@@ -229,7 +279,12 @@
         "review-2",
         "review-3",
         "review-4",
-        "review-5"
+        "review-5",
+        "review-6",
+        "review-7",
+        "review-8",
+        "review-9",
+        "review-10"
       ],
       "settings": {
         "heading": "Hear It From Our Happy Clients",
