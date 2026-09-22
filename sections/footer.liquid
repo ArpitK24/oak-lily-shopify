@@ -1,56 +1,195 @@
-<footer>
-  <div class="footer__copyright">
-    &copy;
-    {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url }}, {{ powered_by_link }}
-  </div>
+{{ 'section-footer.css' | asset_url | stylesheet_tag }}
 
-  <div class="footer__links">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__container page-width">
+    <div class="site-footer__top">
+      <div class="site-footer__col site-footer__col--about">
+        <h2 class="site-footer__heading">{{ section.settings.about_heading | escape }}</h2>
+        <div class="site-footer__content">
+          <p>{{ section.settings.about_text | escape }}</p>
+        </div>
+      </div>
 
-  <div class="footer__payment">
-    {% if section.settings.show_payment_icons %}
-      {% for type in shop.enabled_payment_types %}
-        {{ type | payment_type_svg_tag }}
-      {% endfor %}
-    {% endif %}
+      <div class="site-footer__col site-footer__col--menu">
+        <h2 class="site-footer__heading">
+          {{ section.settings.menu_1_heading | default: 'QUICK LINKS' | escape }}
+        </h2>
+        <ul class="site-footer__links" role="list">
+          {%- if section.settings.menu_1 != blank -%}
+            {%- for link in section.settings.menu_1.links -%}
+              <li><a href="{{ link.url }}">{{ link.title | upcase | escape }}</a></li>
+            {%- endfor -%}
+          {%- else -%}
+            <li><a href="{{ routes.all_products_collection_url }}">ALL PRODUCTS</a></li>
+            <li><a href="{{ routes.collections_url }}/bed-linens">BED LINENS</a></li>
+            <li><a href="{{ routes.collections_url }}/cushion-covers">CUSHION COVERS</a></li>
+            <li><a href="{{ routes.collections_url }}/kitchen-combos">KITCHEN COMBOS</a></li>
+            <li><a href="{{ routes.collections_url }}/spring-sales">SPRING SALES</a></li>
+            <li><a href="{{ routes.search_url }}">SEARCH</a></li>
+          {%- endif -%}
+        </ul>
+      </div>
+
+      <div class="site-footer__col site-footer__col--menu">
+        <h2 class="site-footer__heading">
+          {{ section.settings.menu_2_heading | default: 'POLICIES' | escape }}
+        </h2>
+        <ul class="site-footer__links" role="list">
+          {%- if section.settings.menu_2 != blank -%}
+            {%- for link in section.settings.menu_2.links -%}
+              <li><a href="{{ link.url }}">{{ link.title | upcase | escape }}</a></li>
+            {%- endfor -%}
+          {%- else -%}
+            <li><a href="/policies/contact-information">CONTACT INFORMATION</a></li>
+            <li><a href="/policies/privacy-policy">PRIVACY POLICY</a></li>
+            <li><a href="/policies/refund-policy">REFUND POLICY</a></li>
+            <li><a href="/policies/shipping-policy">SHIPPING POLICY</a></li>
+            <li><a href="/policies/terms-of-service">TERMS OF SERVICE</a></li>
+          {%- endif -%}
+        </ul>
+      </div>
+
+      <div class="site-footer__col site-footer__col--contact">
+        <h2 class="site-footer__heading">{{ section.settings.contact_heading | escape }}</h2>
+        <div class="site-footer__content">
+          <p>AVARAH LIFESTYLES LLP<br>
+          B 1204, HILLCREST<br>
+          HOUSE OF HIRANANDANI<br>
+          BEGUR HULIMAVU ROAD, AKSHAYANAGAR<br>
+          BANGALORE - 560068, KARNATAKA</p>
+          <p>GSTIN 29ACDFA8032H1ZF</p>
+          <p>Mob: <a href="tel:+918088743076">+91 8088 743 076</a>, <a href="tel:+918088749569">+91 8088 749 569</a></p>
+          <p>Email: <a href="mailto:help@oakandlily.in">help@oakandlily.in</a></p>
+        </div>
+      </div>
+
+      <div class="site-footer__col site-footer__col--newsletter">
+        <h2 class="site-footer__heading">{{ section.settings.newsletter_heading | default: 'Subscribe to our emails' | escape }}</h2>
+        {%- form 'customer', class: 'site-footer__newsletter-form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="site-footer__field-group">
+            <input
+              type="email"
+              name="contact[email]"
+              id="NewsletterEmail-{{ section.id }}"
+              class="site-footer__input"
+              value=""
+              placeholder="Email"
+              required
+              aria-label="Email address"
+            >
+            <button type="submit" class="site-footer__submit-btn" aria-label="Subscribe">
+              <svg viewBox="0 0 14 10" fill="none" class="icon-arrow" aria-hidden="true" focusable="false">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"/>
+              </svg>
+            </button>
+          </div>
+        {%- endform -%}
+
+        {%- if section.settings.show_social -%}
+          <ul class="site-footer__social-list" role="list">
+            <li>
+              <a href="{{ section.settings.facebook_url | default: 'https://facebook.com' }}" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg viewBox="0 0 20 20" class="social-icon" aria-hidden="true"><path fill="currentColor" d="M18 10.049C18 5.603 14.419 2 10 2c-4.419 0-8 3.603-8 8.049C2 14.067 4.925 17.396 8.75 18v-5.624H6.719v-2.328h2.03V8.275c0-2.017 1.195-3.132 3.023-3.132.874 0 1.79.158 1.79.158v1.98h-1.009c-.994 0-1.303.621-1.303 1.258v1.51h2.219l-.355 2.326H11.25V18c3.825-.604 6.75-3.933 6.75-7.951Z"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="{{ section.settings.instagram_url | default: 'https://www.instagram.com/oak.and.lily/' }}" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg viewBox="0 0 20 20" class="social-icon" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M13.23 3.492c-.84-.037-1.096-.046-3.23-.046-2.144 0-2.39.01-3.238.055-.776.027-1.195.164-1.487.273a2.43 2.43 0 0 0-.912.593 2.486 2.486 0 0 0-.602.922c-.11.282-.238.702-.274 1.486-.046.84-.046 1.095-.046 3.23 0 2.134.01 2.39.046 3.229.004.51.097 1.016.274 1.495.145.365.319.639.602.913.282.282.538.456.92.602.474.176.974.268 1.479.273.848.046 1.103.046 3.238.046 2.134 0 2.39-.01 3.23-.046.784-.036 1.203-.164 1.486-.273.374-.146.648-.329.921-.602.283-.283.447-.548.602-.922.177-.476.27-.979.274-1.486.037-.84.046-1.095.046-3.23 0-2.134-.01-2.39-.055-3.229-.027-.784-.164-1.204-.274-1.495a2.43 2.43 0 0 0-.593-.913 2.604 2.604 0 0 0-.92-.602c-.284-.11-.703-.237-1.488-.273ZM6.697 2.05c.857-.036 1.131-.045 3.302-.045 1.1-.014 2.202.001 3.302.045.664.014 1.321.14 1.943.374a3.968 3.968 0 0 1 1.414.922c.41.397.728.88.93 1.414.23.622.354 1.279.365 1.942C18 7.56 18 7.824 18 10.005c0 2.17-.01 2.444-.046 3.292-.036.858-.173 1.442-.374 1.943-.2.53-.474.976-.92 1.423a3.896 3.896 0 0 1-1.415.922c-.51.191-1.095.337-1.943.374-.857.036-1.122.045-3.302.045-2.171 0-2.445-.009-3.302-.055-.849-.027-1.432-.164-1.943-.364a4.152 4.152 0 0 1-1.414-.922 4.128 4.128 0 0 1-.93-1.423c-.183-.51-.329-1.085-.365-1.943C2.009 12.45 2 12.167 2 10.004c0-2.161 0-2.435.055-3.302.027-.848.164-1.432.365-1.942a4.44 4.44 0 0 1 .92-1.414 4.18 4.18 0 0 1 1.415-.93c.51-.183 1.094-.33 1.943-.366Zm.427 4.806a4.105 4.105 0 1 1 5.805 5.805 4.105 4.105 0 0 1-5.805-5.805Zm1.882 5.371a2.668 2.668 0 1 0 2.042-4.93 2.668 2.668 0 0 0-2.042 4.93Zm5.922-5.942a.958.958 0 1 1-1.355-1.355.958.958 0 0 1 1.355 1.355Z" clip-rule="evenodd"/></svg>
+              </a>
+            </li>
+          </ul>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <div class="site-footer__copyright">
+        <small>© {{ 'now' | date: '%Y' }}, <a href="{{ routes.root_url }}">{{ shop.name | upcase }}</a></small>
+      </div>
+
+      <ul class="site-footer__policy-links" role="list">
+        {%- if shop.policies.size > 0 -%}
+          {%- for policy in shop.policies -%}
+            <li><small><a href="{{ policy.url }}">{{ policy.title }}</a></small></li>
+          {%- endfor -%}
+        {%- else -%}
+          <li><small><a href="/policies/refund-policy">Refund policy</a></small></li>
+          <li><small><a href="/policies/privacy-policy">Privacy policy</a></small></li>
+          <li><small><a href="/policies/terms-of-service">Terms of service</a></small></li>
+          <li><small><a href="/policies/shipping-policy">Shipping policy</a></small></li>
+          <li><small><a href="/policies/contact-information">Contact information</a></small></li>
+        {%- endif -%}
+      </ul>
+    </div>
   </div>
 </footer>
 
-{% stylesheet %}
-  footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-  }
-  footer a {
-    text-decoration: none;
-    color: var(--color-foreground);
-  }
-  footer .footer__links,
-  footer .footer__payment {
-    display: flex;
-    gap: 1rem;
-  }
-{% endstylesheet %}
-
 {% schema %}
 {
-  "name": "t:general.footer",
+  "name": "Footer",
   "settings": [
     {
+      "type": "text",
+      "id": "about_heading",
+      "label": "About heading",
+      "default": "ABOUT THE BRAND"
+    },
+    {
+      "type": "textarea",
+      "id": "about_text",
+      "label": "About text",
+      "default": "Oak & Lily is a home decor brand inspired by European aesthetics, timeless designs and fine craftsmanship. We specialize in transforming everyday living spaces into warm, welcoming sanctuaries through our premium range of cotton bedsheets, cushion covers, table linen and kitchen linen."
+    },
+    {
+      "type": "text",
+      "id": "menu_1_heading",
+      "label": "Menu 1 heading",
+      "default": "QUICK LINKS"
+    },
+    {
       "type": "link_list",
-      "id": "menu",
-      "label": "t:labels.menu"
+      "id": "menu_1",
+      "label": "Quick links menu"
+    },
+    {
+      "type": "text",
+      "id": "menu_2_heading",
+      "label": "Menu 2 heading",
+      "default": "POLICIES"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Policies menu"
+    },
+    {
+      "type": "text",
+      "id": "contact_heading",
+      "label": "Contact heading",
+      "default": "CONTACT US"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Newsletter heading",
+      "default": "Subscribe to our emails"
     },
     {
       "type": "checkbox",
-      "id": "show_payment_icons",
-      "label": "t:labels.show_payment_icons",
+      "id": "show_social",
+      "label": "Show social icons",
       "default": true
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook link"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram link"
     }
   ]
 }

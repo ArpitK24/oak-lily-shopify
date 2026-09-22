@@ -117,11 +117,114 @@
         "heading": "SHOP BY CATEGORY",
         "background_color": "#f8f4ef"
       }
+    },
+    "secondary_promo_banner": {
+      "type": "secondary-promo-banner",
+      "settings": {
+        "heading": "",
+        "link": "shopify:\/\/collections\/spring-sales"
+      }
+    },
+    "shop_new_arrivals": {
+      "type": "shop-new-arrivals",
+      "settings": {
+        "heading": "shop new arrivals",
+        "subheading": "MEET WHAT’S NEW",
+        "products_to_show": 4,
+        "show_promo_card": true,
+        "promo_heading": "explore<br>new arrivals",
+        "promo_link": "shopify:\/\/collections\/all"
+      }
+    },
+    "build_your_bundle": {
+      "type": "build-your-bundle",
+      "blocks": {
+        "combo-1": { "type": "combo_item", "settings": {} },
+        "combo-2": { "type": "combo_item", "settings": {} },
+        "combo-3": { "type": "combo_item", "settings": {} },
+        "combo-4": { "type": "combo_item", "settings": {} }
+      },
+      "block_order": [
+        "combo-1",
+        "combo-2",
+        "combo-3",
+        "combo-4"
+      ],
+      "settings": {
+        "heading": "BUILD YOUR OWN BUNDLE",
+        "subheading": "Pick your favourite Oak & Lily products and save more when you bundle.",
+        "tier_text": "BUY 2 → SAVE 10%   |   BUY 3 → SAVE 15%",
+        "button_label": "BUILD YOUR BUNDLE",
+        "button_link": "shopify:\/\/pages\/bundle",
+        "show_combos_slider": true,
+        "combos_heading": "GIFTING COMBOS"
+      }
+    },
+    "customer_reviews": {
+      "type": "customer-reviews",
+      "blocks": {
+        "review-1": {
+          "type": "review",
+          "settings": {
+            "author": "Mona Singh",
+            "review_text": "I recently received the cushion covers and throw from Oak and Lily, and I’m really pleased with them. The cushion covers are beautifully made, with a lovely design and soft, good-quality fabric. They add a stylish and cosy touch to my space.",
+            "rating": 5
+          }
+        },
+        "review-2": {
+          "type": "review",
+          "settings": {
+            "author": "Nidhi Marwah",
+            "review_text": "Table cloth size colour and fabric is really nice. Excellent finish and looks just like the pictures. Will definitely buy again.",
+            "rating": 5
+          }
+        },
+        "review-3": {
+          "type": "review",
+          "settings": {
+            "author": "Mamta Kumar",
+            "review_text": "Beautiful print and good fabric. The table runner added so much warmth and charm to our dining area.",
+            "rating": 5
+          }
+        },
+        "review-4": {
+          "type": "review",
+          "settings": {
+            "author": "Ritu Agarwal",
+            "review_text": "Very pretty, material soft, classy look. Quality is exceptional and stitching is super neat.",
+            "rating": 5
+          }
+        },
+        "review-5": {
+          "type": "review",
+          "settings": {
+            "author": "Jaya Ravi Kumar",
+            "review_text": "Excellent quality. Very friendly customer service by team. The bedsheets are 100% pure cotton and super comfortable.",
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "review-1",
+        "review-2",
+        "review-3",
+        "review-4",
+        "review-5"
+      ],
+      "settings": {
+        "heading": "Hear It From Our Happy Clients",
+        "rating_text": "4.70",
+        "reviews_count": "319"
+      }
     }
   },
   "order": [
     "hero_banner",
     "shoppable_videos",
-    "shop_by_category"
+    "shop_by_category",
+    "secondary_promo_banner",
+    "shop_new_arrivals",
+    "build_your_bundle",
+    "customer_reviews"
   ]
 }

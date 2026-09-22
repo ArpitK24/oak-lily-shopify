@@ -1,0 +1,170 @@
+{{ 'section-customer-reviews.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-customer-reviews.js' | asset_url }}" defer="defer"></script>
+
+<div
+  class="customer-reviews-section full-width"
+  role="region"
+  aria-label="{{ section.settings.heading | default: 'Customer reviews' | escape }}"
+>
+  <div class="customer-reviews__container">
+    <div class="customer-reviews__header">
+      <h2 class="customer-reviews__title">
+        {{ section.settings.heading | default: 'Hear It From Our Happy Clients' | escape }}
+      </h2>
+
+      <div class="customer-reviews__meta">
+        <div class="customer-reviews__rating">
+          <div class="customer-reviews__stars" aria-label="5 out of 5 stars">
+            {%- for i in (1..5) -%}
+              <span class="star-icon">★</span>
+            {%- endfor -%}
+          </div>
+          <span class="customer-reviews__score">
+            {{ section.settings.rating_text | default: '4.70' }} ★ ({{ section.settings.reviews_count | default: '319' }})
+          </span>
+        </div>
+
+        <div class="customer-reviews__verified-badge">
+          <svg class="verified-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M1.14 0C.51 0 0 .51 0 1.14v17.72C0 19.49.51 20 1.14 20h17.72c.63 0 1.14-.51 1.14-1.14V11.37c0-.36-.44-.54-.69-.28l-3.95 4.12c-1.69 1.76-3.45 2.64-5.29 2.63-1.82 0-3.55-.82-5.19-2.45-1.74-1.74-2.65-3.63-2.75-5.66-.07-1.88.66-3.69 2.2-5.44.2-.22.53-.22.74-.01l3.47 3.47c.21.21.21.54.03.77-.84 1.07-.87 1.99-.1 2.77.78.78 1.66.67 2.62-.34L19.89 1.78c.07-.07.11-.17.11-.28V1.14C20 .51 19.49 0 18.86 0H1.14Z"/>
+          </svg>
+          <span>Verified</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="customer-reviews__carousel-track" role="list">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {%- assign product = block.settings.product -%}
+          <div class="customer-reviews__card" role="listitem" {{ block.shopify_attributes }}>
+            <div class="customer-reviews__card-inner">
+              <span class="quote-mark" aria-hidden="true">“</span>
+              <p class="customer-reviews__text">{{ block.settings.review_text | escape }}</p>
+
+              <div class="customer-reviews__card-footer">
+                <div class="card-stars">
+                  {%- assign rating_val = block.settings.rating | default: 5 -%}
+                  {%- for i in (1..rating_val) -%}
+                    <span class="star-on">★</span>
+                  {%- endfor -%}
+                </div>
+                <p class="customer-reviews__author">{{ block.settings.author | escape }}</p>
+              </div>
+
+              {%- if product != blank -%}
+                <div class="customer-reviews__product">
+                  <a href="{{ product.url }}">{{ product.title | escape }}</a>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Customer reviews",
+  "tag": "section",
+  "class": "section-customer-reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Hear It From Our Happy Clients"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating score",
+      "default": "4.70"
+    },
+    {
+      "type": "text",
+      "id": "reviews_count",
+      "label": "Review count",
+      "default": "319"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Reviewer name",
+          "default": "Mona Singh"
+        },
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Review text",
+          "default": "I recently received the cushion covers and throw from Oak and Lily, and I’m really pleased with them. The cushion covers are beautifully made, with a lovely design and soft, good-quality fabric."
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5,
+          "label": "Star rating"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Reviewed product (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer reviews",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "author": "Mona Singh",
+            "review_text": "I recently received the cushion covers and throw from Oak and Lily, and I’m really pleased with them. The cushion covers are beautifully made, with a lovely design and soft, good-quality fabric. They add a stylish and cosy touch to my space."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "author": "Nidhi Marwah",
+            "review_text": "Table cloth size colour and fabric is really nice. Excellent finish and looks just like the pictures. Will definitely buy again."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "author": "Mamta Kumar",
+            "review_text": "Beautiful print and good fabric. The table runner added so much warmth and charm to our dining area."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "author": "Ritu Agarwal",
+            "review_text": "Very pretty, material soft, classy look. Quality is exceptional and stitching is super neat."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "author": "Jaya Ravi Kumar",
+            "review_text": "Excellent quality. Very friendly customer service by team. The bedsheets are 100% pure cotton and super comfortable."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

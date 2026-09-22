@@ -1,0 +1,107 @@
+.secondary-promo-banner {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.secondary-promo-banner__container {
+  position: relative;
+  width: 100%;
+}
+
+.secondary-promo-banner__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.secondary-promo-banner__image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.desktop-banner {
+  display: block;
+}
+
+.mobile-banner {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .desktop-banner {
+    display: none;
+  }
+  .mobile-banner {
+    display: block;
+  }
+}
+
+.secondary-promo-banner__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  padding: 15px;
+}
+
+.secondary-promo-banner__content h2 {
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.secondary-promo-banner__content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.secondary-promo-banner__btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #2a5678;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.secondary-promo-banner__btn:hover {
+  background: #1c3e58;
+}
+
+.secondary-promo-banner__placeholder {
+  width: 100%;
+  min-height: 180px;
+  background: linear-gradient(135deg, #103f5a 0%, #1c3e58 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  color: #ffffff;
+}
+
+.secondary-promo-banner__placeholder-tag {
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  opacity: 0.8;
+  margin-bottom: 8px;
+}
+
+.secondary-promo-banner__placeholder-title {
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: clamp(20px, 3vw, 32px);
+  color: #ffffff;
+  font-weight: 600;
+  margin: 0;
+}

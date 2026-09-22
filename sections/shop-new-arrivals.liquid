@@ -1,0 +1,132 @@
+{{ 'section-new-arrivals.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-new-arrivals.js' | asset_url }}" defer="defer"></script>
+
+{%- assign collection = section.settings.collection -%}
+{%- if collection == blank -%}
+  {%- assign collection = collections.all -%}
+{%- endif -%}
+
+<section
+  class="oak-arrivals full-width"
+  aria-labelledby="oak-arrivals-heading-{{ section.id }}"
+>
+  <header class="oak-arrivals__heading">
+    <h2 id="oak-arrivals-heading-{{ section.id }}">{{ section.settings.heading | default: 'shop new arrivals' | escape }}</h2>
+    {%- if section.settings.subheading != blank -%}
+      <p>{{ section.settings.subheading | escape }}</p>
+    {%- endif -%}
+  </header>
+
+  <div
+    class="oak-arrivals__scroller"
+    tabindex="0"
+    role="region"
+    aria-label="{{ section.settings.heading | default: 'New arrivals' | escape }} — scroll to explore"
+  >
+    <ul class="oak-arrivals__row" role="list">
+      {%- assign products_count = 0 -%}
+      {%- if collection != blank and collection.products_count > 0 -%}
+        {%- for product in collection.products limit: section.settings.products_to_show -%}
+          {%- render 'card-product', card_product: product, show_secondary_image: true -%}
+          {%- assign products_count = products_count | plus: 1 -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- if products_count == 0 -%}
+        {%- for i in (1..section.settings.products_to_show) -%}
+          <li class="oak-arrivals__item">
+            <div class="oak-arrivals__product">
+              <div class="oak-arrivals__media">
+                {{ 'product-' | append: i | placeholder_svg_tag: 'oak-arrivals__primary' }}
+                <div class="oak-arrivals__badges"><span class="oak-arrivals__badge">new arrival</span></div>
+              </div>
+              <h3 class="oak-arrivals__name">Oak &amp; Lily Handcrafted Linen Sample {{ i }}</h3>
+              <div class="oak-arrivals__price"><span>₹ 999.00</span></div>
+            </div>
+          </li>
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- if section.settings.show_promo_card -%}
+        {%- assign promo_url = section.settings.promo_link | default: collection.url | default: routes.all_products_collection_url -%}
+        <li class="oak-arrivals__item">
+          <a class="oak-arrivals__promo-link" href="{{ promo_url }}" aria-label="Explore new arrivals">
+            <aside class="oak-arrivals__promo">
+              {%- if section.settings.promo_image != blank -%}
+                {{
+                  section.settings.promo_image
+                  | image_url: width: 600, height: 600
+                  | image_tag: width: 600, height: 600, loading: 'lazy', alt: 'Explore new arrivals'
+                }}
+              {%- endif -%}
+              <p>{{ section.settings.promo_heading | default: 'explore<br>new arrivals' }}</p>
+            </aside>
+          </a>
+        </li>
+      {%- endif -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Shop new arrivals",
+  "tag": "section",
+  "class": "section-shop-new-arrivals",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "shop new arrivals"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "MEET WHAT’S NEW"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4,
+      "label": "Products to show"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_promo_card",
+      "default": true,
+      "label": "Show explore promo card"
+    },
+    {
+      "type": "html",
+      "id": "promo_heading",
+      "label": "Promo card text",
+      "default": "explore<br>new arrivals"
+    },
+    {
+      "type": "url",
+      "id": "promo_link",
+      "label": "Promo card link"
+    },
+    {
+      "type": "image_picker",
+      "id": "promo_image",
+      "label": "Promo card background image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop new arrivals"
+    }
+  ]
+}
+{% endschema %}

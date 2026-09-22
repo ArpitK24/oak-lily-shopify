@@ -1,21 +1,17 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "type": "footer",
-  "name": "t:general.footer",
+  "name": "Footer Group",
   "sections": {
     "footer": {
       "type": "footer",
       "settings": {
-        "menu": "",
-        "show_payment_icons": true
+        "about_heading": "ABOUT THE BRAND",
+        "about_text": "Oak & Lily is a home decor brand inspired by European aesthetics, timeless designs and fine craftsmanship. We specialize in transforming everyday living spaces into warm, welcoming sanctuaries through our premium range of cotton bedsheets, cushion covers, table linen and kitchen linen.",
+        "menu_1_heading": "QUICK LINKS",
+        "menu_2_heading": "POLICIES",
+        "contact_heading": "CONTACT US",
+        "newsletter_heading": "Subscribe to our emails",
+        "show_social": true
       }
     }
   },

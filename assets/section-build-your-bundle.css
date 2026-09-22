@@ -1,0 +1,156 @@
+/* Oak & Lily Bundle & Gifting Combos Section */
+.oak-bundle-section {
+  width: 100%;
+}
+
+.oak-bundle-banner {
+  text-align: center;
+  padding: 56px 20px;
+  background: #f8f4ef;
+  color: #0e1b4d;
+  border-top: 1px solid #ede7de;
+  border-bottom: 1px solid #ede7de;
+}
+
+.oak-bundle-banner h2 {
+  margin: 0 0 14px;
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #0e1b4d;
+}
+
+.oak-bundle-banner__desc {
+  margin: 0 auto 12px;
+  max-width: 520px;
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 15px;
+  line-height: 1.6;
+  color: #635c54;
+}
+
+.oak-bundle-banner__tier {
+  margin: 0 auto 24px;
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #0e1b4d;
+}
+
+.oak-bundle-banner__cta {
+  display: inline-block;
+  background: #0e1b4d;
+  color: #ffffff;
+  border: 1px solid #0e1b4d;
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 12px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.oak-bundle-banner__cta:hover {
+  background: #192d6e;
+  border-color: #192d6e;
+  box-shadow: 0 4px 14px rgba(14, 27, 77, 0.18);
+}
+
+.sldOuter1 {
+  width: 100%;
+  padding: 60px 0 40px;
+  background: #f1ebd9;
+  position: relative;
+}
+
+.sldOuter1 .title-head {
+  text-align: center;
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 700;
+  color: #0e1b4d;
+  margin: 0 auto 30px;
+  letter-spacing: 0.04em;
+}
+
+.combos-carousel-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0 3.6%;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.combos-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.combos-slide-item {
+  flex: 0 0 calc(25% - 15px);
+  min-width: 220px;
+  scroll-snap-align: start;
+}
+
+.combos-slide-item a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.combos-slide-item img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.combos-slide-item a:hover img {
+  transform: translateY(-4px);
+}
+
+.combos-placeholder-card {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #e2dac9;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: #0e1b4d;
+  text-align: center;
+  padding: 16px;
+}
+
+@media (max-width: 990px) {
+  .combos-slide-item {
+    flex: 0 0 calc(33.33% - 14px);
+  }
+}
+
+@media (max-width: 749px) {
+  .oak-bundle-banner {
+    padding: 36px 16px;
+  }
+  .oak-bundle-banner h2 {
+    font-size: 22px;
+  }
+  .sldOuter1 {
+    padding: 40px 0 30px;
+  }
+  .combos-slide-item {
+    flex: 0 0 65vw;
+    min-width: 0;
+  }
+}

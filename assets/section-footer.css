@@ -1,0 +1,200 @@
+/* Oak & Lily Storefront Footer */
+.site-footer {
+  background: #f8f4ef;
+  border-top: 1px solid #ede7de;
+  padding: 56px 0 24px;
+  color: #103f5a;
+  width: 100%;
+}
+
+.site-footer__container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 3.6%;
+  box-sizing: border-box;
+}
+
+.site-footer__top {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1.5fr 1.6fr;
+  gap: 32px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #e4ddd3;
+}
+
+.site-footer__heading {
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #103f5a;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+}
+
+.site-footer__content p {
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 13px;
+  line-height: 1.65;
+  color: #4a5568;
+  margin: 0 0 10px;
+}
+
+.site-footer__content a {
+  color: #103f5a;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.site-footer__content a:hover {
+  text-decoration: underline;
+}
+
+.site-footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.site-footer__links li {
+  margin-bottom: 10px;
+}
+
+.site-footer__links a {
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #103f5a;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: opacity 0.2s ease;
+}
+
+.site-footer__links a:hover {
+  opacity: 0.75;
+}
+
+.site-footer__field-group {
+  display: flex;
+  position: relative;
+  max-width: 320px;
+  margin-bottom: 20px;
+}
+
+.site-footer__input {
+  width: 100%;
+  padding: 12px 42px 12px 14px;
+  background: #ffffff;
+  border: 1px solid #d4cdc4;
+  border-radius: 4px;
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 13px;
+  color: #103f5a;
+  outline: none;
+}
+
+.site-footer__input:focus {
+  border-color: #103f5a;
+}
+
+.site-footer__submit-btn {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-arrow {
+  width: 14px;
+  height: 10px;
+  stroke: #103f5a;
+  fill: #103f5a;
+}
+
+.site-footer__social-list {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  fill: #103f5a;
+  transition: transform 0.2s ease;
+}
+
+.site-footer__social-list a:hover .social-icon {
+  transform: scale(1.1);
+}
+
+.site-footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: 24px;
+  gap: 16px;
+}
+
+.site-footer__copyright small {
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 12px;
+  color: #635c54;
+}
+
+.site-footer__copyright a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.site-footer__policy-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.site-footer__policy-links a {
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 12px;
+  color: #635c54;
+  text-decoration: none;
+}
+
+.site-footer__policy-links a:hover {
+  color: #103f5a;
+  text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+  .site-footer__top {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-footer__top {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .site-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

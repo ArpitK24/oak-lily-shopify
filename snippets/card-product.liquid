@@ -1,0 +1,76 @@
+{%- comment -%}
+  Renders a product card for Oak & Lily storefront.
+  Accepts:
+  - card_product: {Object} Product Liquid object
+  - show_secondary_image: {Boolean} Show secondary image on hover (default: true)
+{%- endcomment -%}
+{%- assign show_secondary_image = show_secondary_image | default: true -%}
+
+{%- if card_product and card_product != empty -%}
+  <li class="oak-arrivals__item">
+    <a class="oak-arrivals__product" href="{{ card_product.url }}" title="{{ card_product.title | escape }}">
+      <div class="oak-arrivals__media">
+        {%- if card_product.featured_media -%}
+          {{
+            card_product.featured_media
+            | image_url: width: 600, height: 600
+            | image_tag:
+              class: 'oak-arrivals__primary',
+              width: 600,
+              height: 600,
+              loading: 'lazy',
+              alt: card_product.title
+          }}
+        {%- else -%}
+          <div class="placeholder-media" style="width: 100%; aspect-ratio: 1; background: #ede7de;"></div>
+        {%- endif -%}
+
+        {%- if show_secondary_image and card_product.media.size > 1 -%}
+          {{
+            card_product.media[1]
+            | image_url: width: 600, height: 600
+            | image_tag:
+              class: 'oak-arrivals__alternate is-ready',
+              width: 600,
+              height: 600,
+              loading: 'lazy',
+              alt: card_product.title,
+              aria_hidden: 'true'
+          }}
+        {%- endif -%}
+
+        <div class="oak-arrivals__badges">
+          {%- if card_product.compare_at_price > card_product.price -%}
+            <span class="oak-arrivals__badge oak-arrivals__badge--sale">Sale</span>
+          {%- endif -%}
+          <span class="oak-arrivals__badge">new arrival</span>
+        </div>
+      </div>
+
+      <h3 class="oak-arrivals__name">{{ card_product.title | escape }}</h3>
+
+      <div class="oak-arrivals__price">
+        {%- if card_product.compare_at_price > card_product.price -%}
+          <s>
+            <span class="visually-hidden">Regular price </span>
+            {{ card_product.compare_at_price | money }}
+          </s>
+          <span>
+            <span class="visually-hidden">Sale price </span>
+            {{ card_product.price | money }}
+          </span>
+        {%- else -%}
+          <span>
+            <span class="visually-hidden">Price </span>
+            {{ card_product.price | money }}
+          </span>
+        {%- endif -%}
+      </div>
+
+      {%- if card_product.compare_at_price > card_product.price -%}
+        {%- assign savings = card_product.compare_at_price | minus: card_product.price -%}
+        <p class="oak-arrivals__saving">Save {{ savings | money }}</p>
+      {%- endif -%}
+    </a>
+  </li>
+{%- endif -%}
