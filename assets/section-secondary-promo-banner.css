@@ -32,10 +32,10 @@
 }
 
 @media screen and (max-width: 767px) {
-  .desktop-banner {
+  .secondary-promo-banner__container.has-mobile-image .desktop-banner {
     display: none;
   }
-  .mobile-banner {
+  .secondary-promo-banner__container.has-mobile-image .mobile-banner {
     display: block;
   }
 }

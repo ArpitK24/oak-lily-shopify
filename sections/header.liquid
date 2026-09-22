@@ -11,7 +11,7 @@
 
 {%- assign nav_menu = section.settings.menu.links | default: linklists.main-menu.links -%}
 
-<div class="oak-header-wrapper{% if section.settings.enable_sticky_header %} oak-header--sticky{% endif %}">
+<div class="oak-header-wrapper full-width{% if section.settings.enable_sticky_header %} oak-header--sticky{% endif %}">
   <header class="header page-width" role="banner">
     {% comment %} Mobile Menu Drawer {% endcomment %}
     <details id="Details-menu-drawer-container" class="menu-drawer-container">

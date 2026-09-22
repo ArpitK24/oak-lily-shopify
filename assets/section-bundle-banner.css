@@ -1,0 +1,67 @@
+/* Oak & Lily Build Your Own Bundle Banner Strip */
+.oak-bundle-banner {
+  text-align: center;
+  padding: 56px 20px;
+  background: #f8f4ef;
+  color: #0e1b4d;
+  border-top: 1px solid #ede7de;
+  border-bottom: 1px solid #ede7de;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.oak-bundle-banner h2 {
+  margin: 0 0 14px;
+  font-family: var(--font-heading-family, "Montserrat", sans-serif);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #0e1b4d;
+}
+
+.oak-bundle-banner p {
+  margin: 0 auto 12px;
+  max-width: 520px;
+  font-family: var(--font-body-family, "Montserrat", sans-serif);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #635c54;
+}
+
+.oak-bundle-banner p.oak-bundle-banner__tier {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #0e1b4d;
+  margin-bottom: 24px;
+}
+
+.oak-bundle-banner .button {
+  background: #0e1b4d;
+  color: #ffffff;
+  border: 1px solid #0e1b4d;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 12px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block;
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 14px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.oak-bundle-banner .button:hover {
+  background: #192d6e;
+  border-color: #192d6e;
+  box-shadow: 0 4px 14px rgba(14, 27, 77, 0.18);
+}
+
+@media (max-width: 749px) {
+  .oak-bundle-banner {
+    padding: 36px 16px;
+  }
+  .oak-bundle-banner h2 {
+    font-size: 22px;
+  }
+}

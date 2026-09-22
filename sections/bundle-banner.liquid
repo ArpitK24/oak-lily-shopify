@@ -1,0 +1,62 @@
+{{ 'section-bundle-banner.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="oak-bundle-banner full-width"
+  aria-label="{{ section.settings.heading | default: 'Build your own bundle' | escape }}"
+>
+  <h2>{{ section.settings.heading | default: 'BUILD YOUR OWN BUNDLE' | escape }}</h2>
+  {%- if section.settings.subheading != blank -%}
+    <p>{{ section.settings.subheading | escape }}</p>
+  {%- endif -%}
+  {%- if section.settings.tier_text != blank -%}
+    <p class="oak-bundle-banner__tier">{{ section.settings.tier_text | escape }}</p>
+  {%- endif -%}
+  {%- assign bundle_link = section.settings.button_link | default: '/bundle' -%}
+  <a class="button" href="{{ bundle_link }}">
+    {{ section.settings.button_label | default: 'BUILD YOUR BUNDLE' | escape }}
+  </a>
+</section>
+
+{% schema %}
+{
+  "name": "Bundle banner strip",
+  "tag": "div",
+  "class": "section-bundle-banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "BUILD YOUR OWN BUNDLE"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Pick your favourite Oak & Lily products and save more when you bundle."
+    },
+    {
+      "type": "text",
+      "id": "tier_text",
+      "label": "Tier promotional text",
+      "default": "BUY 2 → SAVE 10%   |   BUY 3 → SAVE 15%"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "BUILD YOUR BUNDLE"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bundle banner strip"
+    }
+  ]
+}
+{% endschema %}

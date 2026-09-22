@@ -1,24 +1,37 @@
 {{ 'section-build-your-bundle.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'section-build-your-bundle.js' | asset_url }}" defer="defer"></script>
 
+{%- style -%}
+  #shopify-section-{{ section.id }} .sldOuter1 {
+    background-image: url('{{ "gifting-combos-bg.png" | asset_url }}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+{%- endstyle -%}
+
+{%- assign default_combos = 'combo-set-of-cat-print-apron-microwave-oven-mittens-pot-holders,combo-set-of-yellow-lemon-print-apron-microwave-oven-mittens-pot-holders,combo-set-of-beige-ivory-hearts-print-microwave-oven-mittens-pot-holders,combo-set-of-blue-white-polka-dots-print-microwave-oven-mittens-pot-holders,combo-set-of-yellow-honeycomb-print-microwave-oven-mittens-pot-holders,combo-set-of-multicolour-stripe-print-microwave-oven-mittens-yellow-honeycomb-pot-holders,oak-lily-combo-set-of-beach-house-print-microwave-oven-mittens-red-and-white-polka-dots-pot-holders-copy,oak-lily-combo-set-of-microwave-oven-mittens-pot-holders-in-lemon-print' | split: ',' -%}
+
 <div
   class="oak-bundle-section full-width"
   role="region"
   aria-label="{{ section.settings.heading | default: 'Build your bundle' | escape }}"
 >
-  <div class="oak-bundle-banner">
-    <h2>{{ section.settings.heading | default: 'BUILD YOUR OWN BUNDLE' | escape }}</h2>
-    {%- if section.settings.subheading != blank -%}
-      <p class="oak-bundle-banner__desc">{{ section.settings.subheading | escape }}</p>
-    {%- endif -%}
-    {%- if section.settings.tier_text != blank -%}
-      <p class="oak-bundle-banner__tier">{{ section.settings.tier_text | escape }}</p>
-    {%- endif -%}
-    {%- assign bundle_link = section.settings.button_link | default: routes.all_products_collection_url -%}
-    <a href="{{ bundle_link }}" class="button oak-bundle-banner__cta">
-      {{ section.settings.button_label | default: 'BUILD YOUR BUNDLE' | escape }}
-    </a>
-  </div>
+  {%- if section.settings.show_banner -%}
+    <div class="oak-bundle-banner">
+      <h2>{{ section.settings.heading | default: 'BUILD YOUR OWN BUNDLE' | escape }}</h2>
+      {%- if section.settings.subheading != blank -%}
+        <p class="oak-bundle-banner__desc">{{ section.settings.subheading | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.tier_text != blank -%}
+        <p class="oak-bundle-banner__tier">{{ section.settings.tier_text | escape }}</p>
+      {%- endif -%}
+      {%- assign bundle_link = section.settings.button_link | default: routes.all_products_collection_url -%}
+      <a href="{{ bundle_link }}" class="button oak-bundle-banner__cta">
+        {{ section.settings.button_label | default: 'BUILD YOUR BUNDLE' | escape }}
+      </a>
+    </div>
+  {%- endif -%}
 
   {%- if section.settings.show_combos_slider -%}
     <div class="sldOuter1">
@@ -29,8 +42,10 @@
       <div class="combos-carousel-track" role="list">
         {%- if section.blocks.size > 0 -%}
           {%- for block in section.blocks -%}
-            {%- assign product = block.settings.product -%}
-            {%- assign item_url = block.settings.link | default: product.url | default: bundle_link -%}
+            {%- assign default_handle = default_combos[forloop.index0] -%}
+            {%- assign fallback_prod = all_products[default_handle] -%}
+            {%- assign product = block.settings.product | default: fallback_prod -%}
+            {%- assign item_url = block.settings.link | default: product.url | default: '/bundle' -%}
             {%- assign item_title = block.settings.title | default: product.title | default: 'Gifting Combo' -%}
 
             <div class="combos-slide-item" role="listitem" {{ block.shopify_attributes }}>
@@ -69,6 +84,21 @@
               </a>
             </div>
           {%- endfor -%}
+        {%- else -%}
+          {%- for handle in default_combos -%}
+            {%- assign prod = all_products[handle] -%}
+            {%- if prod != blank and prod.featured_image != blank -%}
+              <div class="combos-slide-item" role="listitem">
+                <a href="{{ prod.url }}">
+                  {{
+                    prod.featured_image
+                    | image_url: width: 600, height: 600
+                    | image_tag: width: 300, height: 300, loading: 'lazy', alt: prod.title
+                  }}
+                </a>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
         {%- endif -%}
       </div>
     </div>
@@ -81,6 +111,12 @@
   "tag": "section",
   "class": "section-build-your-bundle",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_banner",
+      "label": "Show bundle banner",
+      "default": false
+    },
     {
       "type": "text",
       "id": "heading",

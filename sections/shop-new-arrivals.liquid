@@ -1,10 +1,7 @@
 {{ 'section-new-arrivals.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'section-new-arrivals.js' | asset_url }}" defer="defer"></script>
 
-{%- assign collection = section.settings.collection -%}
-{%- if collection == blank -%}
-  {%- assign collection = collections.all -%}
-{%- endif -%}
+{%- assign product_handles = 'oak-lily-king-size-flat-bedsheet-in-blush-bloom-print-210-tc-100-cotton-premium-european-quality-soft-breathable-washable,oak-lily-100-cotton-green-sofa-throw-blanket-50x60-inches-soft-breathable-decorative-couch-throw-with-hand-knotted-tassels-lightweight-for-sofa-bed-travel,oak-lily-multi-colour-floral-cotton-cushion-cover-100-pure-cotton-washable-vibrant-elegant-premium-european-quality,oak-lily-kitchen-towels-red-heart-print-red-polka-dot-red-stripe-set-of-3-100-cotton-european-quality-super-absorbent-anti-bacterial' | split: ',' -%}
 
 <section
   class="oak-arrivals full-width"
@@ -25,10 +22,34 @@
   >
     <ul class="oak-arrivals__row" role="list">
       {%- assign products_count = 0 -%}
-      {%- if collection != blank and collection.products_count > 0 -%}
-        {%- for product in collection.products limit: section.settings.products_to_show -%}
+      {%- assign first_product = nil -%}
+
+      {%- if section.settings.product_list != blank and section.settings.product_list.count > 0 -%}
+        {%- for product in section.settings.product_list limit: section.settings.products_to_show -%}
           {%- render 'card-product', card_product: product, show_secondary_image: true -%}
           {%- assign products_count = products_count | plus: 1 -%}
+          {%- if products_count == 1 -%}
+            {%- assign first_product = product -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- elsif section.settings.collection != blank and section.settings.collection.products_count > 0 -%}
+        {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+          {%- render 'card-product', card_product: product, show_secondary_image: true -%}
+          {%- assign products_count = products_count | plus: 1 -%}
+          {%- if products_count == 1 -%}
+            {%- assign first_product = product -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for handle in product_handles limit: section.settings.products_to_show -%}
+          {%- assign prod = all_products[handle] -%}
+          {%- if prod != blank -%}
+            {%- render 'card-product', card_product: prod, show_secondary_image: true -%}
+            {%- assign products_count = products_count | plus: 1 -%}
+            {%- if products_count == 1 -%}
+              {%- assign first_product = prod -%}
+            {%- endif -%}
+          {%- endif -%}
         {%- endfor -%}
       {%- endif -%}
 
@@ -48,7 +69,7 @@
       {%- endif -%}
 
       {%- if section.settings.show_promo_card -%}
-        {%- assign promo_url = section.settings.promo_link | default: collection.url | default: routes.all_products_collection_url -%}
+        {%- assign promo_url = section.settings.promo_link | default: routes.all_products_collection_url -%}
         <li class="oak-arrivals__item">
           <a class="oak-arrivals__promo-link" href="{{ promo_url }}" aria-label="Explore new arrivals">
             <aside class="oak-arrivals__promo">
@@ -58,6 +79,22 @@
                   | image_url: width: 600, height: 600
                   | image_tag: width: 600, height: 600, loading: 'lazy', alt: 'Explore new arrivals'
                 }}
+              {%- elsif first_product.images.size > 1 -%}
+                <img
+                  src="{{ first_product.images[1] | image_url: width: 600, height: 600 }}"
+                  alt="Explore new arrivals"
+                  width="600"
+                  height="600"
+                  loading="lazy"
+                >
+              {%- elsif first_product.featured_image != blank -%}
+                <img
+                  src="{{ first_product.featured_image | image_url: width: 600, height: 600 }}"
+                  alt="Explore new arrivals"
+                  width="600"
+                  height="600"
+                  loading="lazy"
+                >
               {%- endif -%}
               <p>{{ section.settings.promo_heading | default: 'explore<br>new arrivals' }}</p>
             </aside>
@@ -74,6 +111,12 @@
   "tag": "section",
   "class": "section-shop-new-arrivals",
   "settings": [
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Products",
+      "limit": 8
+    },
     {
       "type": "collection",
       "id": "collection",

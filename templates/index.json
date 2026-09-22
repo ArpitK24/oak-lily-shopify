@@ -35,6 +35,16 @@
         "change_slides_speed": 4
       }
     },
+    "bundle_banner": {
+      "type": "bundle-banner",
+      "settings": {
+        "heading": "BUILD YOUR OWN BUNDLE",
+        "subheading": "Pick your favourite Oak & Lily products and save more when you bundle.",
+        "tier_text": "BUY 2 → SAVE 10%   |   BUY 3 → SAVE 15%",
+        "button_label": "BUILD YOUR BUNDLE",
+        "button_link": "shopify:\/\/pages\/bundle"
+      }
+    },
     "shoppable_videos": {
       "type": "shoppable-videos",
       "blocks": {
@@ -130,6 +140,12 @@
       "settings": {
         "heading": "shop new arrivals",
         "subheading": "MEET WHAT’S NEW",
+        "product_list": [
+          "oak-lily-king-size-flat-bedsheet-in-blush-bloom-print-210-tc-100-cotton-premium-european-quality-soft-breathable-washable",
+          "oak-lily-100-cotton-green-sofa-throw-blanket-50x60-inches-soft-breathable-decorative-couch-throw-with-hand-knotted-tassels-lightweight-for-sofa-bed-travel",
+          "oak-lily-multi-colour-floral-cotton-cushion-cover-100-pure-cotton-washable-vibrant-elegant-premium-european-quality",
+          "oak-lily-kitchen-towels-red-heart-print-red-polka-dot-red-stripe-set-of-3-100-cotton-european-quality-super-absorbent-anti-bacterial"
+        ],
         "products_to_show": 4,
         "show_promo_card": true,
         "promo_heading": "explore<br>new arrivals",
@@ -142,20 +158,24 @@
         "combo-1": { "type": "combo_item", "settings": {} },
         "combo-2": { "type": "combo_item", "settings": {} },
         "combo-3": { "type": "combo_item", "settings": {} },
-        "combo-4": { "type": "combo_item", "settings": {} }
+        "combo-4": { "type": "combo_item", "settings": {} },
+        "combo-5": { "type": "combo_item", "settings": {} },
+        "combo-6": { "type": "combo_item", "settings": {} },
+        "combo-7": { "type": "combo_item", "settings": {} },
+        "combo-8": { "type": "combo_item", "settings": {} }
       },
       "block_order": [
         "combo-1",
         "combo-2",
         "combo-3",
-        "combo-4"
+        "combo-4",
+        "combo-5",
+        "combo-6",
+        "combo-7",
+        "combo-8"
       ],
       "settings": {
-        "heading": "BUILD YOUR OWN BUNDLE",
-        "subheading": "Pick your favourite Oak & Lily products and save more when you bundle.",
-        "tier_text": "BUY 2 → SAVE 10%   |   BUY 3 → SAVE 15%",
-        "button_label": "BUILD YOUR BUNDLE",
-        "button_link": "shopify:\/\/pages\/bundle",
+        "show_banner": false,
         "show_combos_slider": true,
         "combos_heading": "GIFTING COMBOS"
       }
@@ -220,6 +240,7 @@
   },
   "order": [
     "hero_banner",
+    "bundle_banner",
     "shoppable_videos",
     "shop_by_category",
     "secondary_promo_banner",

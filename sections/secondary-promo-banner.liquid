@@ -5,7 +5,7 @@
   role="region"
   aria-label="{{ section.settings.heading | default: 'Promotional Banner' | escape }}"
 >
-  <div class="secondary-promo-banner__container">
+  <div class="secondary-promo-banner__container{% if section.settings.image_mobile != blank %} has-mobile-image{% endif %}">
     {%- assign banner_url = section.settings.link | default: section.settings.button_link -%}
 
     {%- if banner_url != blank -%}
@@ -45,14 +45,14 @@
         }}
       {%- endif -%}
     {%- else -%}
-      <div class="secondary-promo-banner__placeholder">
-        <div class="secondary-promo-banner__placeholder-inner">
-          <p class="secondary-promo-banner__placeholder-tag">OAK & LILY</p>
-          <h2 class="secondary-promo-banner__placeholder-title">
-            {{ section.settings.heading | default: 'Pure European Elegance for Your Home' }}
-          </h2>
-        </div>
-      </div>
+      <img
+        src="{{ 'promo-banner-desktop.png' | asset_url }}"
+        alt="{{ section.settings.heading | default: 'Pure European Elegance for Your Home' | escape }}"
+        class="secondary-promo-banner__image desktop-banner"
+        loading="lazy"
+        width="1920"
+        height="229"
+      >
     {%- endif -%}
 
     {%- if section.settings.heading != blank and section.settings.image_desktop != blank -%}

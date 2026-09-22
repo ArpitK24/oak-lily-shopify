@@ -1,7 +1,7 @@
 /* Oak & Lily Customer Reviews Section */
 .customer-reviews-section {
-  padding: 48px 0;
-  background: #f8f4ef;
+  padding: 56px 0;
+  background: #ffffff;
   width: 100%;
 }
 
@@ -12,12 +12,12 @@
 
 .customer-reviews__header {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
   padding: 0 20px;
 }
 
 .customer-reviews__title {
-  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-family: var(--font-heading-family, "Montserrat", sans-serif);
   font-size: clamp(24px, 2.5vw, 34px);
   font-weight: 700;
   color: #103f5a;
@@ -45,7 +45,7 @@
 }
 
 .customer-reviews__score {
-  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-family: var(--font-body-family, "Montserrat", sans-serif);
   font-size: 14px;
   font-weight: 600;
   color: #103f5a;
@@ -71,10 +71,10 @@
 
 .customer-reviews__carousel-track {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding: 10px 3.6% 25px;
+  padding: 16px 3.6% 32px;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
@@ -87,9 +87,9 @@
   flex: 0 0 340px;
   min-width: 280px;
   scroll-snap-align: start;
-  background: #ffffff;
+  background: #f8f4ef;
   border-radius: 8px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 0px 40px 0px #d0d0d0;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -100,7 +100,7 @@
 
 .customer-reviews__card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 6px 44px 0px #c4c4c4;
 }
 
 .quote-mark {
@@ -113,10 +113,10 @@
 }
 
 .customer-reviews__text {
-  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-family: var(--font-body-family, "Montserrat", sans-serif);
   font-size: 13.5px;
   line-height: 1.6;
-  color: #333333;
+  color: #103f5a;
   margin: 0 0 16px;
   flex-grow: 1;
 }
@@ -125,7 +125,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid #f0ede6;
+  border-top: 1px solid #e8e3d8;
   padding-top: 12px;
   margin-top: 8px;
 }
@@ -137,7 +137,7 @@
 }
 
 .customer-reviews__author {
-  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-family: var(--font-heading-family, "Montserrat", sans-serif);
   font-size: 13px;
   font-weight: 600;
   color: #103f5a;
