@@ -1,0 +1,215 @@
+{{ 'section-header.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-header.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --header-bg: {{ section.settings.background_color }};
+    --header-color: {{ section.settings.text_color }};
+    --header-logo-width: {{ section.settings.logo_width }}px;
+  }
+{%- endstyle -%}
+
+{%- assign nav_menu = section.settings.menu.links | default: linklists.main-menu.links -%}
+
+<div class="oak-header-wrapper{% if section.settings.enable_sticky_header %} oak-header--sticky{% endif %}">
+  <header class="header page-width" role="banner">
+    {% comment %} Mobile Menu Drawer {% endcomment %}
+    <details id="Details-menu-drawer-container" class="menu-drawer-container">
+      <summary class="header__icon header__icon--menu link focus-inset" aria-label="Menu">
+        <span class="icon-hamburger">{% render 'icon-hamburger' %}</span>
+        <span class="icon-close">{% render 'icon-close' %}</span>
+      </summary>
+      <div class="menu-drawer__backdrop"></div>
+      <div id="menu-drawer" class="menu-drawer" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+        <button type="button" class="menu-drawer__close" aria-label="Close menu">
+          {% render 'icon-close' %}
+        </button>
+
+        <nav class="menu-drawer__nav" role="navigation">
+          <ul class="menu-drawer__menu" role="list">
+            {%- if nav_menu != blank and nav_menu.size > 0 -%}
+              {%- for link in nav_menu -%}
+                <li class="menu-drawer__item">
+                  {%- if link.links != blank -%}
+                    <details class="menu-drawer__details">
+                      <summary class="menu-drawer__link">
+                        <span>{{ link.title | escape }}</span>
+                        {% render 'icon-caret' %}
+                      </summary>
+                      <ul class="menu-drawer__submenu" role="list">
+                        {%- for childlink in link.links -%}
+                          <li>
+                            <a href="{{ childlink.url }}" class="menu-drawer__sublink">
+                              {{ childlink.title | escape }}
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    </details>
+                  {%- else -%}
+                    <a href="{{ link.url }}" class="menu-drawer__link">
+                      {{ link.title | escape }}
+                    </a>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            {%- else -%}
+              <li class="menu-drawer__item">
+                <a href="{{ routes.root_url }}" class="menu-drawer__link">HOME</a>
+              </li>
+              <li class="menu-drawer__item">
+                <a href="{{ routes.all_products_collection_url }}" class="menu-drawer__link">CATALOG</a>
+              </li>
+            {%- endif -%}
+          </ul>
+        </nav>
+      </div>
+    </details>
+
+    {% comment %} Logo Heading {% endcomment %}
+    <div class="header__heading">
+      <a href="{{ routes.root_url }}" class="header__heading-link">
+        {%- if section.settings.logo != blank -%}
+          {{
+            section.settings.logo
+            | image_url: width: section.settings.logo_width
+            | image_tag: class: 'header__heading-logo', alt: shop.name, loading: 'eager'
+          }}
+        {%- else -%}
+          <img
+            src="{{ 'oak-and-lily-logo.png' | asset_url }}"
+            alt="{{ shop.name | escape }}"
+            width="{{ section.settings.logo_width }}"
+            height="52"
+            class="header__heading-logo"
+            loading="eager"
+          >
+        {%- endif -%}
+      </a>
+    </div>
+
+    {% comment %} Desktop Inline Navigation {% endcomment %}
+    <nav class="header__inline-menu" role="navigation">
+      <ul class="list-menu list-menu--inline" role="list">
+        {%- if nav_menu != blank and nav_menu.size > 0 -%}
+          {%- for link in nav_menu -%}
+            <li>
+              {%- if link.links != blank -%}
+                <details id="Details-HeaderMenu-{{ forloop.index }}" class="header__menu-details">
+                  <summary class="header__menu-item link focus-inset">
+                    <span>{{ link.title | escape }}</span>
+                    {% render 'icon-caret' %}
+                  </summary>
+                  <ul id="HeaderMenu-MenuList-{{ forloop.index }}" class="header__submenu" role="list">
+                    {%- for childlink in link.links -%}
+                      <li>
+                        <a
+                          href="{{ childlink.url }}"
+                          class="{% if childlink.current %}is-active{% endif %}"
+                        >
+                          {{ childlink.title | escape }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </details>
+              {%- else -%}
+                <a
+                  href="{{ link.url }}"
+                  class="header__menu-item link focus-inset{% if link.current %} is-active{% endif %}"
+                >
+                  <span>{{ link.title | escape }}</span>
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        {%- else -%}
+          <li>
+            <a href="{{ routes.root_url }}" class="header__menu-item link focus-inset is-active">
+              <span>HOME</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ routes.all_products_collection_url }}" class="header__menu-item link focus-inset">
+              <span>CATALOG</span>
+            </a>
+          </li>
+        {%- endif -%}
+      </ul>
+    </nav>
+
+    {% comment %} Header Icons {% endcomment %}
+    <div class="header__icons">
+      <a href="{{ routes.search_url }}" class="header__icon header__icon--search link focus-inset" aria-label="Search">
+        {% render 'icon-search' %}
+      </a>
+
+      <a
+        href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+        class="header__icon header__icon--account link focus-inset"
+        aria-label="Account"
+      >
+        {% render 'icon-account' %}
+      </a>
+
+      <a
+        href="{{ routes.cart_url }}"
+        class="header__icon header__icon--cart link focus-inset"
+        id="cart-icon-bubble"
+        aria-label="Cart"
+      >
+        {% render 'icon-cart' %}
+        {%- if cart.item_count > 0 -%}
+          <span class="cart-count-bubble">{{ cart.item_count }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+  </header>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 80,
+      "max": 240,
+      "step": 5,
+      "unit": "px",
+      "label": "Custom logo width",
+      "default": 140
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_header",
+      "label": "Enable sticky header",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f8f4ef"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#103f5a"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,130 @@
+.announcement-bar-wrapper {
+  background-color: var(--announcement-bg, #9dada2);
+  color: var(--announcement-color, #ffffff);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  width: 100%;
+  position: relative;
+  z-index: 101;
+}
+
+.announcement-bar {
+  max-width: var(--page-width, 1400px);
+  margin: 0 auto;
+  padding: 8px 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 38px;
+}
+
+.announcement-bar__slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  min-height: 22px;
+}
+
+.announcement-bar__slide {
+  display: none;
+  width: 100%;
+  text-align: center;
+}
+
+.announcement-bar__slide.is-active {
+  display: block;
+}
+
+.announcement-bar__message {
+  margin: 0;
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: inherit;
+}
+
+.announcement-bar__link {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.2s ease;
+}
+
+.announcement-bar__link:hover {
+  opacity: 0.85;
+}
+
+.announcement-bar__btn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.announcement-bar__btn:hover {
+  opacity: 1;
+}
+
+.announcement-bar__btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.announcement-bar__btn--prev {
+  left: 1rem;
+}
+
+.announcement-bar__btn--prev svg {
+  transform: rotate(90deg);
+  width: 10px;
+  height: 6px;
+}
+
+.announcement-bar__btn--next {
+  right: 1rem;
+}
+
+.announcement-bar__btn--next svg {
+  transform: rotate(-90deg);
+  width: 10px;
+  height: 6px;
+}
+
+@media screen and (max-width: 768px) {
+  .announcement-bar {
+    padding: 7px 2rem;
+    min-height: 34px;
+  }
+
+  .announcement-bar__message {
+    font-size: 11px;
+    letter-spacing: 0.02em;
+  }
+
+  .announcement-bar__btn {
+    padding: 4px 6px;
+  }
+
+  .announcement-bar__btn--prev {
+    left: 0.25rem;
+  }
+
+  .announcement-bar__btn--next {
+    right: 0.25rem;
+  }
+}

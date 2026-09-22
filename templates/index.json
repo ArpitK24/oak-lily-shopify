@@ -1,0 +1,127 @@
+{
+  "sections": {
+    "hero_banner": {
+      "type": "hero-banner-slider",
+      "blocks": {
+        "slide-1": {
+          "type": "slide",
+          "settings": {
+            "link": "shopify:\/\/collections\/spring-sales",
+            "alt_text": "Spring Sales Collection"
+          }
+        },
+        "slide-2": {
+          "type": "slide",
+          "settings": {
+            "link": "shopify:\/\/collections\/kitechen-combos",
+            "alt_text": "Kitchen Combos Collection"
+          }
+        },
+        "slide-3": {
+          "type": "slide",
+          "settings": {
+            "link": "shopify:\/\/collections\/bed-linens",
+            "alt_text": "Bed Linens Collection"
+          }
+        }
+      },
+      "block_order": [
+        "slide-1",
+        "slide-2",
+        "slide-3"
+      ],
+      "settings": {
+        "auto_rotate": true,
+        "change_slides_speed": 4
+      }
+    },
+    "shoppable_videos": {
+      "type": "shoppable-videos",
+      "blocks": {
+        "card-1": { "type": "video_card", "settings": {} },
+        "card-2": { "type": "video_card", "settings": {} },
+        "card-3": { "type": "video_card", "settings": {} },
+        "card-4": { "type": "video_card", "settings": {} },
+        "card-5": { "type": "video_card", "settings": {} },
+        "card-6": { "type": "video_card", "settings": {} },
+        "card-7": { "type": "video_card", "settings": {} }
+      },
+      "block_order": [
+        "card-1",
+        "card-2",
+        "card-3",
+        "card-4",
+        "card-5",
+        "card-6",
+        "card-7"
+      ],
+      "settings": {
+        "heading": ""
+      }
+    },
+    "shop_by_category": {
+      "type": "collections-carousel",
+      "blocks": {
+        "category-1": {
+          "type": "category",
+          "settings": {
+            "title": "Kitchen Napkins",
+            "url": "shopify:\/\/collections\/kitchen-napkins"
+          }
+        },
+        "category-2": {
+          "type": "category",
+          "settings": {
+            "title": "Cushion Covers",
+            "url": "shopify:\/\/collections\/cushion-covers"
+          }
+        },
+        "category-3": {
+          "type": "category",
+          "settings": {
+            "title": "Table Runners",
+            "url": "shopify:\/\/collections\/table-runners"
+          }
+        },
+        "category-4": {
+          "type": "category",
+          "settings": {
+            "title": "Aprons",
+            "url": "shopify:\/\/collections\/aprons"
+          }
+        },
+        "category-5": {
+          "type": "category",
+          "settings": {
+            "title": "Bed Linen",
+            "url": "shopify:\/\/collections\/bed-linens"
+          }
+        },
+        "category-6": {
+          "type": "category",
+          "settings": {
+            "title": "Table Combos",
+            "url": "shopify:\/\/collections\/table-combos"
+          }
+        }
+      },
+      "block_order": [
+        "category-1",
+        "category-2",
+        "category-3",
+        "category-4",
+        "category-5",
+        "category-6"
+      ],
+      "settings": {
+        "heading": "SHOP BY CATEGORY",
+        "background_color": "#f8f4ef"
+      }
+    }
+  },
+  "order": [
+    "hero_banner",
+    "shoppable_videos",
+    "shop_by_category"
+  ]
+}

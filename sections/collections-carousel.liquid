@@ -1,0 +1,170 @@
+{{ 'section-collections-carousel.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-collections-carousel.js' | asset_url }}" defer="defer"></script>
+
+<div
+  class="collections-carousel full-width"
+  style="background-color: {{ section.settings.background_color | default: '#f8f4ef' }};"
+  role="region"
+  aria-label="{{ section.settings.heading | default: 'Shop by Category' | escape }}"
+>
+  <div class="collections-carousel__wrapper">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="collections-carousel__heading">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+
+    <div class="collections-carousel__track" role="list">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {%- assign card_idx = forloop.index | modulo: 6 -%}
+          {%- if card_idx == 0 -%}{%- assign card_idx = 6 -%}{%- endif -%}
+
+          {%- case card_idx -%}
+            {%- when 1 -%}
+              {%- assign fallback_title = 'Kitchen Napkins' -%}
+              {%- assign fallback_img = 'category-kitchen-napkins.png' -%}
+              {%- assign fallback_handle = 'kitchen-napkins' -%}
+            {%- when 2 -%}
+              {%- assign fallback_title = 'Cushion Covers' -%}
+              {%- assign fallback_img = 'category-cushion-covers.png' -%}
+              {%- assign fallback_handle = 'cushion-covers' -%}
+            {%- when 3 -%}
+              {%- assign fallback_title = 'Table Runners' -%}
+              {%- assign fallback_img = 'category-table-runners.png' -%}
+              {%- assign fallback_handle = 'table-runners' -%}
+            {%- when 4 -%}
+              {%- assign fallback_title = 'Aprons' -%}
+              {%- assign fallback_img = 'category-aprons.png' -%}
+              {%- assign fallback_handle = 'aprons' -%}
+            {%- when 5 -%}
+              {%- assign fallback_title = 'Bed Linen' -%}
+              {%- assign fallback_img = 'category-bed-linens.png' -%}
+              {%- assign fallback_handle = 'bed-linens' -%}
+            {%- when 6 -%}
+              {%- assign fallback_title = 'Table Combos' -%}
+              {%- assign fallback_img = 'category-table-combos.png' -%}
+              {%- assign fallback_handle = 'table-combos' -%}
+          {%- endcase -%}
+
+          {%- assign collection = block.settings.collection -%}
+          {%- if collection == blank and collections[fallback_handle] != empty -%}
+            {%- assign collection = collections[fallback_handle] -%}
+          {%- endif -%}
+
+          {%- assign category_url = block.settings.url -%}
+          {%- if category_url == blank and collection != blank -%}
+            {%- assign category_url = collection.url -%}
+          {%- endif -%}
+          {%- if category_url == blank -%}
+            {%- assign category_url = routes.all_products_collection_url -%}
+          {%- endif -%}
+
+          {%- assign category_title = block.settings.title -%}
+          {%- if category_title == blank and collection != blank -%}
+            {%- assign category_title = collection.title -%}
+          {%- endif -%}
+          {%- if category_title == blank -%}
+            {%- assign category_title = fallback_title -%}
+          {%- endif -%}
+
+          <div
+            class="collections-carousel__item"
+            role="listitem"
+            {{ block.shopify_attributes }}
+          >
+            <a href="{{ category_url }}">
+              <div class="collections-carousel__image-wrapper" style="border-radius: 3px;">
+                {%- if block.settings.image != blank -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 480, height: 480
+                    | image_tag: width: 240, height: 240, alt: category_title, loading: 'lazy'
+                  }}
+                {%- elsif collection != blank and collection.featured_image != blank -%}
+                  {{
+                    collection.featured_image
+                    | image_url: width: 480, height: 480
+                    | image_tag: width: 240, height: 240, alt: category_title, loading: 'lazy'
+                  }}
+                {%- else -%}
+                  <img
+                    src="{{ fallback_img | asset_url }}"
+                    alt="{{ category_title | upcase | escape }}"
+                    width="240"
+                    height="240"
+                    loading="lazy"
+                    style="border-radius: 3px;"
+                  >
+                {%- endif -%}
+                <div class="collections-carousel__overlay" style="border-radius: 3px;"></div>
+              </div>
+              <span class="collections-carousel__title">{{ category_title | escape }}</span>
+            </a>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Shop by category",
+  "tag": "section",
+  "class": "section-collections-carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "SHOP BY CATEGORY"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f8f4ef"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (optional override)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title (optional override)"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link (optional override)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by category",
+      "blocks": [
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" }
+      ]
+    }
+  ]
+}
+{% endschema %}

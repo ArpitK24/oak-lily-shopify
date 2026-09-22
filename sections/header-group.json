@@ -1,0 +1,47 @@
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-1": {
+          "type": "announcement",
+          "settings": {
+            "text": "Enjoy Free shipping and Free Returns!"
+          }
+        },
+        "announcement-2": {
+          "type": "announcement",
+          "settings": {
+            "text": "Next Day Delivery for All Bangalore Based Orders"
+          }
+        }
+      },
+      "block_order": [
+        "announcement-1",
+        "announcement-2"
+      ],
+      "settings": {
+        "background_color": "#9dada2",
+        "text_color": "#ffffff",
+        "auto_rotate": true,
+        "change_slides_speed": 4
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu",
+        "logo_width": 140,
+        "enable_sticky_header": true,
+        "background_color": "#f8f4ef",
+        "text_color": "#103f5a"
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

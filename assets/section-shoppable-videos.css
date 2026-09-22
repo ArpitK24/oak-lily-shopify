@@ -1,0 +1,121 @@
+.shoppable-video-carousel {
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.shoppable-video-carousel .section-heading {
+  text-align: center;
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-foreground, #103f5a);
+}
+
+/* Keep nice side padding */
+.shoppable-video-carousel .page-width {
+  max-width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  box-sizing: border-box;
+}
+
+.shoppable-video-carousel .carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.shoppable-video-carousel .carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.shoppable-video-carousel .video-card {
+  flex: 0 0 calc(16.66% - 0.8rem);
+  max-width: calc(16.66% - 0.8rem);
+  position: relative;
+  border-radius: 0;
+  overflow: hidden;
+  background: #000;
+  scroll-snap-align: start;
+}
+
+/* Fix last card spacing */
+.shoppable-video-carousel .carousel .video-card:last-child {
+  margin-right: 0 !important;
+}
+
+/* Video reel format 9:16 */
+.shoppable-video-carousel .video-wrapper {
+  position: relative;
+  width: 100%;
+  background: #000;
+  cursor: pointer;
+}
+
+.shoppable-video-carousel .video-wrapper video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  display: block;
+}
+
+.shoppable-video-carousel .product-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem;
+  color: #fff;
+  text-decoration: none;
+  z-index: 2;
+}
+
+.shoppable-video-carousel .product-overlay img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+.shoppable-video-carousel .product-info {
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.shoppable-video-carousel .product-overlay p {
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.3em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #fff;
+}
+
+.shoppable-video-carousel .product-overlay .price {
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 13px;
+  color: #ffd700;
+  display: block;
+}
+
+/* Mobile tweak: 2 full videos + 3rd peeking */
+@media (max-width: 768px) {
+  .shoppable-video-carousel .video-card {
+    flex: 0 0 45%;
+    max-width: 45%;
+  }
+}
