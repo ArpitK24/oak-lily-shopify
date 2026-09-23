@@ -1,20 +1,182 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
-      "type": "product",
-      "settings": {}
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "rating_widget": {
+          "type": "rating",
+          "settings": {}
+        },
+        "subtitle": {
+          "type": "text",
+          "settings": {
+            "text": "King 274cm x 274cm| Queen 225cm x 250cm | Pillowcase 43cm x 68cm",
+            "text_style": "body"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "taxes": {
+          "type": "text",
+          "settings": {
+            "text": "Inclusive of all taxes",
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "square"
+          }
+        },
+        "coupon_text": {
+          "type": "text",
+          "settings": {
+            "text": "15% off on your first purchase (Coupon Code: FIRST15)",
+            "text_style": "body"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "trust_badges": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "truck",
+            "heading_1": "Free shipping",
+            "icon_2": "package",
+            "heading_2": "Delivery in 3-7 days",
+            "icon_3": "return",
+            "heading_3": "Free returns within 7 days"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "rating_widget",
+        "subtitle",
+        "price",
+        "taxes",
+        "variant_picker",
+        "coupon_text",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "trust_badges"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "show",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "related_products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 24,
+        "padding_bottom": 48
+      }
+    },
+    "collapsible_content": {
+      "type": "collapsible-content",
+      "blocks": {
+        "row_description": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Description",
+            "icon": "check_mark",
+            "row_content": "<p>Introducing the Oak & Lily Bedsheet in sophisticated 'Autumn Leaves' pattern.<br><br>Elevate your bedroom decor with this luxurious 100% cotton king size bedsheet, crafted from premium European quality fabric with a 180 thread count. This bedsheet offers unmatched softness, breathability, and durability for an indulgent sleeping experience. The refreshing Autumn Leaves pattern adds sophistication and charm, transforming your bedroom into a serene retreat.<br><br>Effortlessly maintain the beauty and quality of your bedding with our machine washable fabric. Enjoy easy care and lasting elegance wash after wash. Upgrade your bedding with our elegant and durable 100% cotton bedsheet for the ultimate in luxury and style.</p>"
+          }
+        },
+        "row_key_features": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Key Features",
+            "icon": "check_mark",
+            "row_content": "<p><strong>Perfect Size Fit:</strong> Designed to perfectly fit your bed with mattress heights ranging from 6 inches to 12 inches, providing a snug and comfortable fit that stays in place throughout the day and night.<br><br><strong>Elegant Design:</strong> Featuring an elegant Autumn Leaves pattern, this bedsheet adds a touch of sophistication and style to any bedroom decor, creating a serene and inviting atmosphere.<br><br><strong>Complete Bedding Set:</strong> Includes 2 matching pillow covers, each measuring 17 inches x 27 inches, complementing the bedsheet with the same exquisite floral design for a coordinated look.<br><br><strong>Premium European Quality:</strong> Crafted from 100% cotton with a 180 thread count, our bedsheet offers superior softness, breathability, and durability, ensuring a luxurious sleeping experience.</p>"
+          }
+        },
+        "row_care": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Care Instructions",
+            "icon": "check_mark",
+            "row_content": "<p>Machine washable for effortless cleaning and maintenance. Enjoy the convenience of a bedsheet that retains its quality and elegance wash after wash.</p>"
+          }
+        },
+        "row_address": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Manufacturer Address",
+            "icon": "check_mark",
+            "row_content": "<p>AVARAH LIFESTYLES LLP<br>B 1204, HILLCREST<br>HOUSE OF HIRANANDANI<br>BEGUR HULIMAVU ROAD, AKSHAYANAGAR<br>BANGALORE - 560068, KARNATAKA</p>"
+          }
+        }
+      },
+      "block_order": [
+        "row_description",
+        "row_key_features",
+        "row_care",
+        "row_address"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "Product Details",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "scheme-1",
+        "container_color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "padding_top": 24,
+        "padding_bottom": 48
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "related_products",
+    "collapsible_content"
   ]
 }
