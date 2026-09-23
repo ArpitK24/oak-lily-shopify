@@ -2,7 +2,9 @@
 
 {%- assign active_view = template.suffix | default: page.handle -%}
 
-{%- if active_view == 'our-story' -%}
+{%- if active_view == 'bundle' -%}
+  {% render 'bundle-content' %}
+{%- elsif active_view == 'our-story' -%}
   {% render 'our-story-content' %}
 {%- elsif active_view == 'refund-policy' or active_view == 'privacy-policy' or active_view == 'terms-of-service' or active_view == 'shipping-policy' or active_view == 'contact-information' -%}
   {% render 'policy-content', policy_handle: active_view %}
