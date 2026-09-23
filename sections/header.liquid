@@ -182,11 +182,11 @@
             </li>
           {%- endfor -%}
         {%- else -%}
-          <li><a href="/" class="header__menu-item link focus-inset is-active"><span>HOME</span></a></li>
-          <li><a href="/pages/our-story" class="header__menu-item link focus-inset"><span>OUR STORY</span></a></li>
+          <li><a href="/" class="header__menu-item link focus-inset{% if request.path == '/' %} is-active{% endif %}"><span>HOME</span></a></li>
+          <li><a href="/pages/our-story" class="header__menu-item link focus-inset{% if request.path contains '/our-story' %} is-active{% endif %}"><span>OUR STORY</span></a></li>
           <li>
             <details id="Details-HeaderMenu-3" class="header__menu-details">
-              <summary class="header__menu-item link focus-inset"><span>KITCHEN LINENS</span>{% render 'icon-caret' %}</summary>
+              <summary class="header__menu-item link focus-inset{% if request.path contains '/kitchen' or request.path contains '/aprons' or request.path contains '/mittens' or request.path contains '/pot-holders' or request.path contains '/kitechen' %} is-active{% endif %}"><span>KITCHEN LINENS</span>{% render 'icon-caret' %}</summary>
               <ul id="HeaderMenu-MenuList-3" class="header__submenu" role="list">
                 <li><a href="/collections/aprons">APRONS</a></li>
                 <li><a href="/collections/mittens">MITTENS</a></li>
@@ -278,6 +278,20 @@
     </div>
   </header>
 </div>
+
+<script>
+  (function() {
+    var p = window.location.pathname.toLowerCase();
+    var kitchenKeys = ['/kitchen', '/aprons', '/mittens', '/pot-holders', '/kitechen'];
+    var isKitchen = kitchenKeys.some(function(k) { return p.indexOf(k) !== -1; });
+    if (isKitchen) {
+      var homeLink = document.querySelector('.header__inline-menu a[href="/"]');
+      if (homeLink) homeLink.classList.remove('is-active');
+      var kitchenSummary = document.querySelector('#Details-HeaderMenu-3 summary');
+      if (kitchenSummary) kitchenSummary.classList.add('is-active');
+    }
+  })();
+</script>
 
 {% schema %}
 {

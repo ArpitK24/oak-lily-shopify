@@ -5,7 +5,7 @@
 <script>
   (function() {
     var p = window.location.pathname.toLowerCase();
-    if (p.indexOf('/bundle') !== -1 || p.indexOf('/our-story') !== -1 || p.indexOf('/privacy-policy') !== -1 || p.indexOf('/refund-policy') !== -1 || p.indexOf('/shipping-policy') !== -1 || p.indexOf('/terms-of-service') !== -1 || p.indexOf('/contact-information') !== -1 || p.indexOf('/kitchen-napkins') !== -1) {
+    if (p.indexOf('/bundle') !== -1 || p.indexOf('/collections/') !== -1 || p.indexOf('/our-story') !== -1 || p.indexOf('/privacy-policy') !== -1 || p.indexOf('/refund-policy') !== -1 || p.indexOf('/shipping-policy') !== -1 || p.indexOf('/terms-of-service') !== -1 || p.indexOf('/contact-information') !== -1 || p.indexOf('/kitchen-napkins') !== -1) {
       document.documentElement.classList.add('has-fallback-route');
     }
   })();
@@ -58,6 +58,10 @@
   {% render 'bundle-content' %}
 </div>
 
+<div id="fallback-kitchen-linens" style="display: none;">
+  {% render 'kitchen-linens-content' %}
+</div>
+
 <script>
   (function() {
     var p = window.location.pathname.toLowerCase();
@@ -70,7 +74,21 @@
       if (title) document.title = title + ' – OAK AND LILY';
     }
 
-    if (p.indexOf('/bundle') !== -1) {
+    if (p.indexOf('/collections/aprons') !== -1) {
+      activate('fallback-kitchen-linens', 'Aprons');
+    } else if (p.indexOf('/collections/mittens') !== -1) {
+      activate('fallback-kitchen-linens', 'Mittens');
+    } else if (p.indexOf('/collections/kitchen-napkins') !== -1) {
+      activate('fallback-kitchen-linens', 'Kitchen Napkins');
+    } else if (p.indexOf('/collections/pot-holders') !== -1) {
+      activate('fallback-kitchen-linens', 'Pot Holders');
+    } else if (p.indexOf('/collections/kitechen-gifts') !== -1 || p.indexOf('/collections/kitchen-gifts') !== -1) {
+      activate('fallback-kitchen-linens', 'Kitchen Gifts');
+    } else if (p.indexOf('/collections/kitechen-combos') !== -1 || p.indexOf('/collections/kitchen-combos') !== -1) {
+      activate('fallback-kitchen-linens', 'Kitchen Combos');
+    } else if (p.indexOf('/collections/kitchen-linens') !== -1) {
+      activate('fallback-kitchen-linens', 'Kitchen Linens');
+    } else if (p.indexOf('/bundle') !== -1) {
       activate('fallback-bundle', 'Build Your Bundle');
     } else if (p.indexOf('/our-story') !== -1) {
       activate('fallback-our-story', 'Our Story');

@@ -1,0 +1,88 @@
+{% comment %}
+  Oak & Lily Kitchen Linens Collection Content
+  Faithful replica using Shopify live products, Shopify CDN media, and authentic layout
+{% endcomment %}
+
+{{ 'section-collection.css' | asset_url | stylesheet_tag }}
+
+{%- assign col_key = active_collection | default: collection.handle | default: 'kitchen-linens' -%}
+
+<div class="custom-banner-wrapper">
+  <div class="custom-banner">
+    <a href="/bundle">
+      <picture>
+        <img src="{{ 'kitchen-bundle-banner.png' | asset_url }}" alt="Promotional banner" loading="lazy">
+      </picture>
+    </a>
+  </div>
+</div>
+
+<div class="collection-hero">
+  <div class="collection-hero__inner">
+    <h1 class="collection-hero__title" id="collection-title-display">
+      {% case col_key %}
+        {% when 'aprons' %}APRONS
+        {% when 'mittens' %}MITTENS
+        {% when 'kitchen-napkins' %}KITCHEN NAPKINS
+        {% when 'pot-holders' %}POT HOLDERS
+        {% when 'kitechen-gifts', 'kitchen-gifts' %}KITCHEN GIFTS
+        {% when 'kitechen-combos', 'kitchen-combos' %}KITCHEN COMBOS
+        {% else %}KITCHEN LINENS
+      {% endcase %}
+    </h1>
+  </div>
+</div>
+
+<div class="collection-page">
+  <div id="collection-grids-wrapper">
+    <div class="collection-grid-container" id="grid-container-kitchen-linens" style="display: none;">
+      <ul id="product-grid-kitchen-linens" class="collection-product-grid collection-grid-box" data-collection="kitchen-linens">
+        {% render 'kitchen-cards-linens' %}
+      </ul>
+    </div>
+    {% render 'kitchen-cards-sub' %}
+  </div>
+</div>
+
+<script>
+  (function() {
+    var p = window.location.pathname.toLowerCase();
+    var activeKey = 'kitchen-linens';
+    
+    if (p.indexOf('/aprons') !== -1) activeKey = 'aprons';
+    else if (p.indexOf('/mittens') !== -1) activeKey = 'mittens';
+    else if (p.indexOf('/kitchen-napkins') !== -1) activeKey = 'kitchen-napkins';
+    else if (p.indexOf('/pot-holders') !== -1) activeKey = 'pot-holders';
+    else if (p.indexOf('/kitechen-gifts') !== -1 || p.indexOf('/kitchen-gifts') !== -1) activeKey = 'kitechen-gifts';
+    else if (p.indexOf('/kitchen-combos') !== -1 || p.indexOf('/kitechen-combos') !== -1) activeKey = 'kitechen-combos';
+    else if (p.indexOf('/kitchen-linens') !== -1) activeKey = 'kitchen-linens';
+
+    var titles = {
+      'aprons': 'APRONS',
+      'mittens': 'MITTENS',
+      'kitchen-napkins': 'KITCHEN NAPKINS',
+      'pot-holders': 'POT HOLDERS',
+      'kitechen-gifts': 'KITCHEN GIFTS',
+      'kitchen-gifts': 'KITCHEN GIFTS',
+      'kitechen-combos': 'KITCHEN COMBOS',
+      'kitchen-combos': 'KITCHEN COMBOS',
+      'kitchen-linens': 'KITCHEN LINENS'
+    };
+
+    var titleEl = document.getElementById('collection-title-display');
+    if (titleEl && titles[activeKey]) {
+      titleEl.textContent = titles[activeKey];
+      document.title = titles[activeKey] + ' – OAK AND LILY';
+    }
+
+    var targetGrid = document.getElementById('grid-container-' + activeKey);
+    if (!targetGrid) targetGrid = document.getElementById('grid-container-kitchen-linens');
+    if (targetGrid) targetGrid.style.display = 'block';
+
+    // Highlight KITCHEN LINENS in header
+    var headerKitchen = document.querySelector('#Details-HeaderMenu-3 summary');
+    if (headerKitchen) headerKitchen.classList.add('is-active');
+    var homeItem = document.querySelector('.header__inline-menu a[href="/"]');
+    if (homeItem) homeItem.classList.remove('is-active');
+  })();
+</script>
