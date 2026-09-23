@@ -7,6 +7,10 @@
     {% render 'table-linens-content', active_collection: collection.handle %}
   {% when 'gift-collections', 'gift-cards', 'spring-sales' %}
     {% render 'gift-collections-content', active_collection: collection.handle %}
+  {% when 'bed-linens', 'king-flat-sheets', 'queen-flat-sheets', 'king-fitted-sheets' %}
+    {% render 'bed-linens-content', active_collection: collection.handle %}
+  {% when 'living-space', 'living-spaces', 'throw', 'beach-towels', 'cushion-covers' %}
+    {% render 'living-spaces-content', active_collection: collection.handle %}
   {% else %}
     {% render 'kitchen-linens-content', active_collection: collection.handle %}
 {% endcase %}

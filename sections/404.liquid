@@ -70,6 +70,14 @@
   {% render 'gift-collections-content' %}
 </div>
 
+<div id="fallback-bed-linens" style="display: none;">
+  {% render 'bed-linens-content' %}
+</div>
+
+<div id="fallback-living-spaces" style="display: none;">
+  {% render 'living-spaces-content' %}
+</div>
+
 <script>
   (function() {
     var p = window.location.pathname.toLowerCase();
@@ -82,7 +90,23 @@
       if (title) document.title = title + ' – OAK AND LILY';
     }
 
-    if (p.indexOf('/collections/table-runners') !== -1) {
+    if (p.indexOf('/collections/king-flat-sheets') !== -1) {
+      activate('fallback-bed-linens', 'King Flat Sheets');
+    } else if (p.indexOf('/collections/queen-flat-sheets') !== -1) {
+      activate('fallback-bed-linens', 'Queen Flat Sheets');
+    } else if (p.indexOf('/collections/king-fitted-sheets') !== -1) {
+      activate('fallback-bed-linens', 'King Fitted Sheets');
+    } else if (p.indexOf('/collections/bed-linens') !== -1) {
+      activate('fallback-bed-linens', 'Bed Linens');
+    } else if (p.indexOf('/collections/throw') !== -1) {
+      activate('fallback-living-spaces', 'Throw');
+    } else if (p.indexOf('/collections/beach-towels') !== -1) {
+      activate('fallback-living-spaces', 'Beach Towels');
+    } else if (p.indexOf('/collections/cushion-covers') !== -1) {
+      activate('fallback-living-spaces', 'Cushion Covers');
+    } else if (p.indexOf('/collections/living-space') !== -1) {
+      activate('fallback-living-spaces', 'Living Space');
+    } else if (p.indexOf('/collections/table-runners') !== -1) {
       activate('fallback-table-linens', 'Table Runners');
     } else if (p.indexOf('/collections/table-covers') !== -1) {
       activate('fallback-table-linens', 'Table Covers');

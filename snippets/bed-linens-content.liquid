@@ -1,0 +1,80 @@
+{% comment %}
+  Oak & Lily Bed Linens Collection Content
+  Faithful replica using Shopify live products, Shopify CDN media, and authentic layout
+{% endcomment %}
+
+{{ 'section-collection.css' | asset_url | stylesheet_tag }}
+
+{%- assign col_key = active_collection | default: collection.handle | default: 'bed-linens' -%}
+
+<div class="custom-banner-wrapper">
+  <div class="custom-banner">
+    <a href="/bundle">
+      <picture>
+        <img src="{{ 'kitchen-bundle-banner.png' | asset_url }}" alt="Promotional banner" loading="lazy">
+      </picture>
+    </a>
+  </div>
+</div>
+
+<div class="collection-hero">
+  <div class="collection-hero__inner">
+    <h1 class="collection-hero__title" id="bed-collection-title-display">
+      {% case col_key %}
+        {% when 'king-flat-sheets' %}KING FLAT SHEETS
+        {% when 'queen-flat-sheets' %}QUEEN FLAT SHEETS
+        {% when 'king-fitted-sheets' %}KING FITTED SHEETS
+        {% else %}BED LINENS
+      {% endcase %}
+    </h1>
+  </div>
+</div>
+
+<div class="collection-page">
+  <div id="bed-collection-grids-wrapper">
+    <div class="collection-grid-container" id="grid-container-bed-linens" style="display: none;">
+      <ul id="product-grid-bed-linens" class="collection-product-grid collection-grid-box" data-collection="bed-linens">
+        {% render 'bed-cards-linens' %}
+      </ul>
+    </div>
+    {% render 'bed-cards-sub' %}
+  </div>
+</div>
+
+<script>
+  (function() {
+    var p = window.location.pathname.toLowerCase();
+    var isBed = p.indexOf('/bed-') !== -1 || p.indexOf('-sheets') !== -1;
+    if (!isBed) return;
+
+    var activeKey = 'bed-linens';
+    
+    if (p.indexOf('/king-flat-sheets') !== -1) activeKey = 'king-flat-sheets';
+    else if (p.indexOf('/queen-flat-sheets') !== -1) activeKey = 'queen-flat-sheets';
+    else if (p.indexOf('/king-fitted-sheets') !== -1) activeKey = 'king-fitted-sheets';
+    else if (p.indexOf('/bed-linens') !== -1) activeKey = 'bed-linens';
+
+    var titles = {
+      'king-flat-sheets': 'KING FLAT SHEETS',
+      'queen-flat-sheets': 'QUEEN FLAT SHEETS',
+      'king-fitted-sheets': 'KING FITTED SHEETS',
+      'bed-linens': 'BED LINENS'
+    };
+
+    var titleEl = document.getElementById('bed-collection-title-display');
+    if (titleEl && titles[activeKey]) {
+      titleEl.textContent = titles[activeKey];
+      document.title = titles[activeKey] + ' – OAK AND LILY';
+    }
+
+    var targetGrid = document.getElementById('grid-container-' + activeKey);
+    if (!targetGrid) targetGrid = document.getElementById('grid-container-bed-linens');
+    if (targetGrid) targetGrid.style.display = 'block';
+
+    // Highlight BED LINENS in header
+    var headerBed = document.querySelector('#Details-HeaderMenu-5 summary');
+    if (headerBed) headerBed.classList.add('is-active');
+    var homeItem = document.querySelector('.header__inline-menu a[href="/"]');
+    if (homeItem) homeItem.classList.remove('is-active');
+  })();
+</script>
