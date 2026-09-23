@@ -47,6 +47,9 @@
 <script>
   (function() {
     var p = window.location.pathname.toLowerCase();
+    var isKitchen = p.indexOf('/kitchen-') !== -1 || p.indexOf('/aprons') !== -1 || p.indexOf('/mittens') !== -1 || p.indexOf('/pot-holders') !== -1 || p.indexOf('/kitechen-') !== -1;
+    if (!isKitchen) return;
+
     var activeKey = 'kitchen-linens';
     
     if (p.indexOf('/aprons') !== -1) activeKey = 'aprons';

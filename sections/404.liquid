@@ -62,6 +62,14 @@
   {% render 'kitchen-linens-content' %}
 </div>
 
+<div id="fallback-table-linens" style="display: none;">
+  {% render 'table-linens-content' %}
+</div>
+
+<div id="fallback-gift-collections" style="display: none;">
+  {% render 'gift-collections-content' %}
+</div>
+
 <script>
   (function() {
     var p = window.location.pathname.toLowerCase();
@@ -74,7 +82,25 @@
       if (title) document.title = title + ' – OAK AND LILY';
     }
 
-    if (p.indexOf('/collections/aprons') !== -1) {
+    if (p.indexOf('/collections/table-runners') !== -1) {
+      activate('fallback-table-linens', 'Table Runners');
+    } else if (p.indexOf('/collections/table-covers') !== -1) {
+      activate('fallback-table-linens', 'Table Covers');
+    } else if (p.indexOf('/collections/placemats') !== -1) {
+      activate('fallback-table-linens', 'Placemats');
+    } else if (p.indexOf('/collections/table-gifts') !== -1) {
+      activate('fallback-table-linens', 'Table Gifts');
+    } else if (p.indexOf('/collections/table-combos') !== -1) {
+      activate('fallback-table-linens', 'Table Combos');
+    } else if (p.indexOf('/collections/table-linens') !== -1) {
+      activate('fallback-table-linens', 'Table Linens');
+    } else if (p.indexOf('/collections/gift-cards') !== -1) {
+      activate('fallback-gift-collections', 'Gift Cards');
+    } else if (p.indexOf('/collections/gift-collections') !== -1) {
+      activate('fallback-gift-collections', 'Gift Collections');
+    } else if (p.indexOf('/collections/spring-sales') !== -1) {
+      activate('fallback-gift-collections', 'Spring Sales');
+    } else if (p.indexOf('/collections/aprons') !== -1) {
       activate('fallback-kitchen-linens', 'Aprons');
     } else if (p.indexOf('/collections/mittens') !== -1) {
       activate('fallback-kitchen-linens', 'Mittens');

@@ -1,0 +1,185 @@
+{% comment %}
+  Oak & Lily Shop By Categories Grid (/collections)
+{% endcomment %}
+
+{{ 'section-collection.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .shop-categories-page {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 20px 40px 60px;
+    box-sizing: border-box;
+  }
+  @media (max-width: 749px) {
+    .shop-categories-page {
+      padding: 16px 16px 45px;
+    }
+  }
+  .shop-categories-title {
+    font-family: var(--font-heading-family, 'Montserrat', sans-serif);
+    font-size: 30px;
+    font-weight: 400;
+    color: #103f5a;
+    letter-spacing: 0.6px;
+    margin: 25px 0 24px;
+    text-transform: uppercase;
+  }
+  @media (max-width: 749px) {
+    .shop-categories-title {
+      font-size: 24px;
+      margin: 18px 0 16px;
+    }
+  }
+  .shop-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 28px;
+    row-gap: 36px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  @media (max-width: 1024px) {
+    .shop-categories-grid {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 20px;
+      row-gap: 28px;
+    }
+  }
+  @media (max-width: 749px) {
+    .shop-categories-grid {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 14px;
+      row-gap: 24px;
+    }
+  }
+  .shop-category-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+  }
+  .shop-category-media {
+    border: 1px solid #103f5a;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    position: relative;
+    background: #ffffff;
+  }
+  .shop-category-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .shop-category-card:hover .shop-category-media img {
+    transform: scale(1.03);
+  }
+  .shop-category-heading {
+    margin: 14px 0 0;
+    font-family: var(--font-body-family, 'Montserrat', sans-serif);
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: #103f5a;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .shop-category-heading span.arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+  .shop-category-card:hover .shop-category-heading span.arrow {
+    transform: translateX(4px);
+  }
+</style>
+
+<div class="shop-categories-page">
+  <h1 class="shop-categories-title">SHOP BY CATEGORIES</h1>
+  <ul class="shop-categories-grid" role="list">
+    <li>
+      <a href="/collections/kitchen-napkins" class="shop-category-card">
+        <div class="shop-category-media">
+          <img src="{{ 'category-kitchen-napkins.jpg' | asset_url }}" alt="Kitchen Napkins" loading="lazy" width="533" height="533">
+        </div>
+        <h3 class="shop-category-heading">KITCHEN NAPKINS <span class="arrow">→</span></h3>
+      </a>
+    </li>
+    <li>
+      <a href="/collections/aprons" class="shop-category-card">
+        <div class="shop-category-media">
+          <img src="{{ 'category-aprons.jpg' | asset_url }}" alt="Aprons" loading="lazy" width="533" height="533">
+        </div>
+        <h3 class="shop-category-heading">APRONS <span class="arrow">→</span></h3>
+      </a>
+    </li>
+    <li>
+      <a href="/collections/mittens" class="shop-category-card">
+        <div class="shop-category-media">
+          <img src="{{ 'category-mittens.jpg' | asset_url }}" alt="Mittens" loading="lazy" width="533" height="533">
+        </div>
+        <h3 class="shop-category-heading">MITTENS <span class="arrow">→</span></h3>
+      </a>
+    </li>
+    <li>
+      <a href="/collections/kitechen-combos" class="shop-category-card">
+        <div class="shop-category-media">
+          <img src="{{ 'category-kitchen-combos.jpg' | asset_url }}" alt="Kitchen Combos" loading="lazy" width="533" height="533">
+        </div>
+        <h3 class="shop-category-heading">KITCHEN COMBOS <span class="arrow">→</span></h3>
+      </a>
+    </li>
+    <li>
+      <a href="/collections/table-runners" class="shop-category-card">
+        <div class="shop-category-media">
+          <img src="{{ 'category-table-runners.png' | asset_url }}" alt="Table Runners" loading="lazy" width="533" height="533">
+        </div>
+        <h3 class="shop-category-heading">TABLE RUNNERS <span class="arrow">→</span></h3>
+      </a>
+    </li>
+    <li>
+      <a href="/collections/coffee-table-runners" class="shop-category-card">
+        <div class="shop-category-media">
+          <img src="{{ 'category-coffee-table-runners.jpg' | asset_url }}" alt="Coffee Table Runners" loading="lazy" width="533" height="533">
+        </div>
+        <h3 class="shop-category-heading">COFFEE TABLE RUNNERS <span class="arrow">→</span></h3>
+      </a>
+    </li>
+    <li>
+      <a href="/collections/table-covers" class="shop-category-card">
+        <div class="shop-category-media">
+          <img src="{{ 'category-table-covers.png' | asset_url }}" alt="Table Covers" loading="lazy" width="533" height="533">
+        </div>
+        <h3 class="shop-category-heading">TABLE COVERS <span class="arrow">→</span></h3>
+      </a>
+    </li>
+    <li>
+      <a href="/collections/coffee-table-covers" class="shop-category-card">
+        <div class="shop-category-media">
+          <img src="{{ 'category-coffee-table-covers.jpg' | asset_url }}" alt="Coffee Table Covers" loading="lazy" width="533" height="533">
+        </div>
+        <h3 class="shop-category-heading">COFFEE TABLE COVERS <span class="arrow">→</span></h3>
+      </a>
+    </li>
+    <li>
+      <a href="/collections/bed-linens" class="shop-category-card">
+        <div class="shop-category-media">
+          <img src="{{ 'category-bed-linens.jpg' | asset_url }}" alt="Bed Linens" loading="lazy" width="533" height="533">
+        </div>
+        <h3 class="shop-category-heading">BED LINENS <span class="arrow">→</span></h3>
+      </a>
+    </li>
+    <li>
+      <a href="/collections/gift-collections" class="shop-category-card">
+        <div class="shop-category-media">
+          <img src="{{ 'category-gift-collections.png' | asset_url }}" alt="Gift Collections" loading="lazy" width="533" height="533">
+        </div>
+        <h3 class="shop-category-heading">GIFT COLLECTIONS <span class="arrow">→</span></h3>
+      </a>
+    </li>
+  </ul>
+</div>

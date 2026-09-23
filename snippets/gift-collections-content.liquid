@@ -1,0 +1,72 @@
+{% comment %}
+  Oak & Lily Gifts Collection Content
+  Faithful replica using Shopify live products, Shopify CDN media, and authentic layout
+{% endcomment %}
+
+{{ 'section-collection.css' | asset_url | stylesheet_tag }}
+
+{%- assign col_key = active_collection | default: collection.handle | default: 'gift-collections' -%}
+
+<div class="custom-banner-wrapper">
+  <div class="custom-banner">
+    <a href="/bundle">
+      <picture>
+        <img src="{{ 'kitchen-bundle-banner.png' | asset_url }}" alt="Promotional banner" loading="lazy">
+      </picture>
+    </a>
+  </div>
+</div>
+
+<div class="collection-hero">
+  <div class="collection-hero__inner">
+    <h1 class="collection-hero__title" id="gift-collection-title-display">
+      {% case col_key %}
+        {% when 'gift-cards' %}GIFT CARDS
+        {% when 'spring-sales' %}SPRING SALES
+        {% else %}GIFT COLLECTIONS
+      {% endcase %}
+    </h1>
+  </div>
+</div>
+
+<div class="collection-page">
+  <div id="gift-collection-grids-wrapper">
+    {% render 'gift-cards-collections' %}
+  </div>
+</div>
+
+<script>
+  (function() {
+    var p = window.location.pathname.toLowerCase();
+    var isGift = p.indexOf('/gift-') !== -1 || p.indexOf('/spring-sales') !== -1;
+    if (!isGift) return;
+
+    var activeKey = 'gift-collections';
+    
+    if (p.indexOf('/gift-cards') !== -1) activeKey = 'gift-cards';
+    else if (p.indexOf('/spring-sales') !== -1) activeKey = 'spring-sales';
+    else if (p.indexOf('/gift-collections') !== -1) activeKey = 'gift-collections';
+
+    var titles = {
+      'gift-cards': 'GIFT CARDS',
+      'spring-sales': 'SPRING SALES',
+      'gift-collections': 'GIFT COLLECTIONS'
+    };
+
+    var titleEl = document.getElementById('gift-collection-title-display');
+    if (titleEl && titles[activeKey]) {
+      titleEl.textContent = titles[activeKey];
+      document.title = titles[activeKey] + ' – OAK AND LILY';
+    }
+
+    var targetGrid = document.getElementById('grid-container-' + activeKey);
+    if (!targetGrid) targetGrid = document.getElementById('grid-container-gift-collections');
+    if (targetGrid) targetGrid.style.display = 'block';
+
+    // Highlight GIFTS in header
+    var headerGifts = document.querySelector('#Details-HeaderMenu-7 summary');
+    if (headerGifts) headerGifts.classList.add('is-active');
+    var homeItem = document.querySelector('.header__inline-menu a[href="/"]');
+    if (homeItem) homeItem.classList.remove('is-active');
+  })();
+</script>
