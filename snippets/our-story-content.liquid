@@ -1,0 +1,49 @@
+{{ 'section-our-story.css' | asset_url | stylesheet_tag }}
+
+<div class="our-story-section">
+  <div class="our-story__banner-dt">
+    <a href="#">
+      <img
+        src="{{ 'our-story-banner-desktop.png' | asset_url }}"
+        alt="Oak & Lily Our Story"
+        class="our-story__banner-img"
+        loading="eager"
+        width="1440"
+        height="400"
+      >
+    </a>
+  </div>
+
+  <div class="our-story__banner-mb">
+    <a href="/pages/reviews">
+      <img
+        src="{{ 'our-story-banner-mobile.png' | asset_url }}"
+        alt="Oak & Lily Our Story"
+        class="our-story__banner-img"
+        loading="eager"
+        width="390"
+        height="300"
+      >
+    </a>
+  </div>
+
+  <div class="our-story__container" style="background-image: url('{{ 'our-story-bg.png' | asset_url }}');">
+    <div class="our-story__content">
+      <h2>"LIVING SPACES FULL OF LIFE"</h2>
+
+      {%- if page.content != blank and page.content.size > 50 -%}
+        <div class="rte">{{ page.content }}</div>
+      {%- else -%}
+        <p>Welcome to Oak &amp; Lily, where timeless elegance meets everyday functionality. We are a brand dedicated to offering affordable-premium home furnishings and kitchen linens, meticulously crafted from 100% cotton and adhering to the highest European standards of quality and design.</p>
+        <p>Our collections include an array of beautifully made table cloths, table runners, bedsheets, kitchen towels, aprons, oven mittens, placemats, pot holders, and more, each piece designed to add a touch of sophistication and comfort to your home.</p>
+        <p>At Oak &amp; Lily, we believe that your living spaces should reflect your personal style while providing unparalleled comfort and utility. Our vision is to become the benchmark brand for discerning customers who appreciate the finer things in life. We are committed to transforming everyday living spaces into sanctuaries of elegance and tranquility, ensuring that every moment you spend at home feels special.</p>
+        <p>With a passion for excellence and an eye for detail, our team sources superior fabrics and employs precise craftsmanship to create products that are not only beautiful but also durable and easy to care for. Whether you’re setting the table for a family dinner, sprucing up your bedroom, or adding a touch of charm to your kitchen, Oak &amp; Lily is here to help you create a home that exudes warmth and sophistication.</p>
+        <p>Join us on our journey to bring a blend of classic design and contemporary flair to households around the world. Experience the Oak &amp; Lily difference – where quality, affordability, and elegance converge.</p>
+      {%- endif -%}
+
+      <div class="our-story__button-wrapper">
+        <a href="/collections/all" class="button button--secondary">SHOP ALL</a>
+      </div>
+    </div>
+  </div>
+</div>

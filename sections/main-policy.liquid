@@ -1,0 +1,52 @@
+{{ 'section-policy.css' | asset_url | stylesheet_tag }}
+
+{%- assign target_handle = section.settings.policy_handle | default: page.handle -%}
+
+{% render 'policy-content', policy_handle: target_handle %}
+
+{% schema %}
+{
+  "name": "Policy Content",
+  "tag": "section",
+  "class": "section-policy",
+  "settings": [
+    {
+      "type": "select",
+      "id": "policy_handle",
+      "label": "Policy Type",
+      "options": [
+        {
+          "value": "",
+          "label": "Auto-detect from page"
+        },
+        {
+          "value": "refund-policy",
+          "label": "Refund Policy"
+        },
+        {
+          "value": "privacy-policy",
+          "label": "Privacy Policy"
+        },
+        {
+          "value": "terms-of-service",
+          "label": "Terms of Service"
+        },
+        {
+          "value": "shipping-policy",
+          "label": "Shipping Policy"
+        },
+        {
+          "value": "contact-information",
+          "label": "Contact Information"
+        }
+      ],
+      "default": ""
+    }
+  ],
+  "presets": [
+    {
+      "name": "Policy Content"
+    }
+  ]
+}
+{% endschema %}

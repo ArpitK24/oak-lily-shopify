@@ -11,6 +11,8 @@ body {
   flex-direction: column;
   margin: 0;
   min-height: 100svh;
+  background-color: var(--color-background, #f8f4ef);
+  color: var(--color-foreground, #0e1b4d);
 }
 
 html:has(dialog[scroll-lock][open], details[scroll-lock][open]) {

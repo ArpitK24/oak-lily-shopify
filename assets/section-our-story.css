@@ -1,0 +1,136 @@
+/* Oak & Lily Our Story Page Styles */
+.our-story-section {
+  width: 100%;
+  background-color: var(--color-background, #f8f4ef);
+}
+
+.banner-dt,
+.our-story__banner-dt {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+  .banner-dt,
+  .our-story__banner-dt {
+    display: none;
+  }
+}
+
+.banner-mb,
+.our-story__banner-mb {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .banner-mb,
+  .our-story__banner-mb {
+    display: block;
+  }
+}
+
+.banner-img,
+.our-story__banner-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+@media only screen and (max-width: 768px) {
+  .banner-mb .banner-img,
+  .our-story__banner-mb .our-story__banner-img {
+    height: auto;
+  }
+}
+
+.story-container,
+.our-story__container {
+  background-size: cover;
+  background-position: center;
+  padding: 40px 20px;
+}
+
+.story-content,
+.our-story__content {
+  background-color: #F8F4EF;
+  border: 2px solid #e1c279;
+  padding: 30px 40px 40px;
+  text-align: left;
+  border-radius: 15px;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.story-content h2,
+.our-story__content h2 {
+  font-family: var(--font-heading-family, "Montserrat", sans-serif);
+  font-weight: 600;
+  font-size: 3.3rem;
+  margin-bottom: 30px;
+  text-align: center;
+  padding-top: 10px;
+  color: rgb(var(--color-foreground, 14, 27, 77));
+  letter-spacing: 0.05em;
+}
+
+.story-content p,
+.our-story__content p {
+  font-family: var(--font-body-family, "Montserrat", sans-serif);
+  font-size: 1.4rem;
+  line-height: 1.7;
+  color: rgba(var(--color-foreground, 14, 27, 77), 0.85);
+  margin-bottom: 16px;
+}
+
+.our-story__button-wrapper {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.our-story__button-wrapper .button {
+  display: inline-block;
+  padding: 12px 32px;
+  background-color: rgb(var(--color-foreground, 14, 27, 77));
+  color: #ffffff;
+  font-family: var(--font-body-family, "Montserrat", sans-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.our-story__button-wrapper .button:hover {
+  background-color: #baa431;
+  opacity: 0.95;
+}
+
+@media (max-width: 768px) {
+  .story-container,
+  .our-story__container {
+    padding: 20px 10px;
+  }
+  .story-content,
+  .our-story__content {
+    padding: 20px 16px;
+  }
+  .story-content h2,
+  .our-story__content h2 {
+    font-size: 2.0rem;
+    margin-bottom: 20px;
+  }
+  .story-content p,
+  .our-story__content p {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-policy",
+      "settings": {
+        "policy_handle": "refund-policy"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

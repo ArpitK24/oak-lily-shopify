@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-our-story",
+      "settings": {
+        "heading": "\"LIVING SPACES FULL OF LIFE\"",
+        "button_label": "SHOP ALL",
+        "button_url": "/collections/all"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

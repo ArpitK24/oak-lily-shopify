@@ -25,6 +25,9 @@
 
     {% # Load and preload the critical CSS %}
     {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
+    {% if template.name == 'policy' or template.name == 'page' %}
+      {{ 'section-policy.css' | asset_url | stylesheet_tag }}
+    {% endif %}
 
     {{ content_for_header }}
   </head>
@@ -33,7 +36,16 @@
     {% sections 'header-group' %}
 
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
-      {{ content_for_layout }}
+      {%- if request.page_type == 'policy' or request.path contains '/policies/' -%}
+        {%- assign policy_handle = request.path | split: '/policies/' | last | replace: '/', '' -%}
+        {%- if policy.body contains 'My Store operates' or policy.body.size < 500 or policy_handle == 'privacy-policy' -%}
+          {% render 'policy-content', policy_handle: policy_handle %}
+        {%- else -%}
+          {{ content_for_layout }}
+        {%- endif -%}
+      {%- else -%}
+        {{ content_for_layout }}
+      {%- endif -%}
     </main>
 
     {% sections 'footer-group' %}

@@ -18,9 +18,29 @@
     --font-body-weight-bold: 700;
     --page-width: {{ settings.max_page_width | default: '1600px' }};
     --page-margin: {{ settings.min_page_margin | default: 0 }}px;
-    --color-background: {{ settings.background_color | default: '#ffffff' }};
-    --color-foreground: {{ settings.foreground_color | default: '#103f5a' }};
+    {%- assign bg_color = '#f8f4ef' -%}
+    {%- if settings.background_color != blank and settings.background_color != '#ffffff' and settings.background_color != '#FFFFFF' -%}
+      {%- assign bg_color = settings.background_color -%}
+    {%- endif -%}
+    {%- assign fg_color = '#0e1b4d' -%}
+    {%- if settings.foreground_color != blank and settings.foreground_color != '#333333' and settings.foreground_color != '#000000' -%}
+      {%- assign fg_color = settings.foreground_color -%}
+    {%- endif -%}
+    --color-background: {{ bg_color }};
+    --color-foreground: {{ fg_color }};
+    --gradient-background: {{ bg_color }};
+    --border-radius: 0.0rem;
+    --border-width: 0.1rem;
+    --border-opacity: 1.0;
+    --shadow-opacity: 0.0;
+    --font-heading-scale: 1.0;
+    --font-body-scale: 1.0;
     --style-border-radius-inputs: {{ settings.input_corner_radius | default: 0 }}px;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
   }
 
   body, input, textarea, button, select {

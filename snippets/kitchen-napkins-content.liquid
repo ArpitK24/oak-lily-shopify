@@ -1,0 +1,221 @@
+{{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .article-template {
+    padding-top: 40px;
+    padding-bottom: 60px;
+  }
+  @media screen and (min-width: 750px) {
+    .article-template {
+      padding-top: 50px;
+      padding-bottom: 80px;
+    }
+  }
+  .article-template__title {
+    font-family: var(--font-heading-family, "Montserrat", sans-serif);
+    color: #103f5a;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  .article-template header {
+    margin-bottom: 20px;
+  }
+  .article-template .caption-with-letter-spacing {
+    font-size: 13px;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    color: rgba(16, 63, 90, 0.7);
+    font-family: var(--font-body-family, "Montserrat", sans-serif);
+  }
+  .article-template__content {
+    font-family: var(--font-body-family, "Montserrat", sans-serif);
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(16, 63, 90, 0.85);
+    margin-top: 24px;
+    margin-bottom: 40px;
+  }
+  .article-template__content p {
+    margin-bottom: 20px;
+  }
+  .article-template__content strong,
+  .article-template__content b {
+    color: #103f5a;
+  }
+  .article-template__social-sharing {
+    margin-top: 16px;
+    margin-bottom: 24px;
+  }
+  .share-button__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: 1px solid rgba(16, 63, 90, 0.2);
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-family: var(--font-body-family, "Montserrat", sans-serif);
+    font-size: 13px;
+    color: #103f5a;
+    cursor: pointer;
+  }
+  .share-button__button:hover {
+    border-color: #103f5a;
+  }
+  .article-template__back {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .article-template__link {
+    font-family: var(--font-heading-family, "Montserrat", sans-serif);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #103f5a;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .article-template__link:hover {
+    color: #baa431;
+  }
+  .article-template__comment-wrapper {
+    background-color: #fbf9f6;
+    padding: 50px 20px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(16, 63, 90, 0.08);
+  }
+  .article-template__comment-wrapper h2 {
+    font-family: var(--font-heading-family, "Montserrat", sans-serif);
+    font-size: 24px;
+    color: #103f5a;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .comment-form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .article-template__comment-fields {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  @media screen and (min-width: 750px) {
+    .article-template__comment-fields {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .comment-form .field {
+    margin-bottom: 16px;
+  }
+  .comment-form .field__input,
+  .comment-form textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid rgba(16, 63, 90, 0.2);
+    border-radius: 4px;
+    font-family: var(--font-body-family, "Montserrat", sans-serif);
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  .comment-form .field__label {
+    display: block;
+    font-size: 12px;
+    color: rgba(16, 63, 90, 0.7);
+    margin-bottom: 4px;
+  }
+  .comment-form input[type="submit"] {
+    background-color: #baa431;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font-heading-family, "Montserrat", sans-serif);
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    display: block;
+    margin: 20px auto 0;
+    transition: background-color 0.2s ease;
+  }
+  .comment-form input[type="submit"]:hover {
+    background-color: #a48f28;
+  }
+{%- endstyle -%}
+
+<article class="article-template">
+  <header class="page-width page-width--narrow">
+    <h1 class="article-template__title">
+      {{ article.title | default: "Oak&Lily 100% Pure Cotton Kitchen Napkins: Premium Quality for Home Cooks" }}
+    </h1>
+    <span class="circle-divider caption-with-letter-spacing">
+      <time datetime="{{ article.published_at | default: '2025-09-28T15:04:44Z' | date: '%Y-%m-%dT%H:%M:%SZ' }}">
+        {{ article.published_at | default: '2025-09-28' | date: '%B %d, %Y' }}
+      </time>
+    </span>
+  </header>
+
+  <div class="article-template__social-sharing page-width page-width--narrow">
+    <div class="share-button">
+      <button class="share-button__button" type="button" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');">
+        <svg width="13" height="12" viewBox="0 0 13 12" class="icon icon-share" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.625 8.125V10.2917C1.625 10.579 1.73914 10.8545 1.9423 11.0577C2.14547 11.2609 2.42102 11.375 2.70833 11.375H10.2917C10.579 11.375 10.8545 11.2609 11.0577 11.0577C11.2609 10.8545 11.375 10.579 11.375 10.2917V8.125" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M6.14775 1.27137C6.34301 1.0761 6.65959 1.0761 6.85485 1.27137L9.56319 3.9797C9.75845 4.17496 9.75845 4.49154 9.56319 4.6868C9.36793 4.88207 9.05135 4.88207 8.85609 4.6868L6.5013 2.33203L4.14652 4.6868C3.95126 4.88207 3.63468 4.88207 3.43942 4.6868C3.24415 4.49154 3.24415 4.17496 3.43942 3.9797L6.14775 1.27137Z" fill="currentColor"></path>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M6.5 1.125C6.77614 1.125 7 1.34886 7 1.625V8.125C7 8.40114 6.77614 8.625 6.5 8.625C6.22386 8.625 6 8.40114 6 8.125V1.625C6 1.34886 6.22386 1.125 6.5 1.125Z" fill="currentColor"></path>
+        </svg>
+        Share
+      </button>
+    </div>
+  </div>
+
+  <div class="article-template__content page-width page-width--narrow rte">
+    {%- if article.content != blank -%}
+      {{ article.content }}
+    {%- else -%}
+      <p>Home cooks and kitchen enthusiasts who want reliable, absorbent napkins that actually work will appreciate what Oak&amp;Lily brings to the table. These 100% pure cotton kitchen napkins deliver the performance you need for everyday cooking and entertaining without breaking the bank.</p>
+      <p>We'll explore how the superior cotton quality sets these napkins apart from synthetic alternatives, examine their exceptional absorbency for handling spills and cleanup tasks, and show you the versatile ways you can use them throughout your kitchen routine. You'll also discover why their easy care requirements and impressive durability make them a smart long-term investment for any household.</p>
+    {%- endif -%}
+  </div>
+
+  <div class="article-template__back element-margin-top center">
+    <a href="{{ blog.url | default: '/blogs/news' }}" class="article-template__link link animate-arrow">
+      <span class="icon-wrap">
+        <svg viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false" class="icon icon-arrow" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"></path>
+        </svg>
+      </span>
+      Back to blog
+    </a>
+  </div>
+
+  <div class="article-template__comment-wrapper background-secondary">
+    <div id="comments" class="page-width page-width--narrow">
+      <form method="post" action="#comments" id="comment_form" class="comment-form">
+        <h2>Leave a comment</h2>
+        <div class="article-template__comments-fields">
+          <div class="article-template__comment-fields">
+            <div class="field">
+              <label class="field__label" for="CommentForm-author">Name <span aria-hidden="true">*</span></label>
+              <input type="text" name="comment[author]" id="CommentForm-author" class="field__input" placeholder="Name" required>
+            </div>
+            <div class="field">
+              <label class="field__label" for="CommentForm-email">Email <span aria-hidden="true">*</span></label>
+              <input type="email" name="comment[email]" id="CommentForm-email" class="field__input" placeholder="Email" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="form__label field__label" for="CommentForm-body">Comment <span aria-hidden="true">*</span></label>
+            <textarea rows="5" name="comment[body]" id="CommentForm-body" class="text-area field__input" placeholder="Comment" required></textarea>
+          </div>
+        </div>
+        <input type="submit" class="button" value="Post comment">
+      </form>
+    </div>
+  </div>
+</article>

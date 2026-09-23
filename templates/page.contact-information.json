@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-policy",
+      "settings": {
+        "policy_handle": "contact-information"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

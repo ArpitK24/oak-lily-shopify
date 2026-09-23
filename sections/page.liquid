@@ -1,17 +1,25 @@
-{% comment %}
-  This section is used in the page template to render store pages like About us
-  or Contact us.
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
 
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/page
-{% endcomment %}
+{%- assign active_view = template.suffix | default: page.handle -%}
 
-<h1>{{ page.title }}</h1>
-
-{{ page.content }}
+{%- if active_view == 'our-story' -%}
+  {% render 'our-story-content' %}
+{%- elsif active_view == 'refund-policy' or active_view == 'privacy-policy' or active_view == 'terms-of-service' or active_view == 'shipping-policy' or active_view == 'contact-information' -%}
+  {% render 'policy-content', policy_handle: active_view %}
+{%- elsif active_view == 'kitchen-napkins' -%}
+  {% render 'kitchen-napkins-content' %}
+{%- else -%}
+  <div class="main-page page-width page-width--narrow">
+    <h1 class="main-page__title">{{ page.title | escape }}</h1>
+    <div class="main-page__content rte">
+      {{ page.content }}
+    </div>
+  </div>
+{%- endif -%}
 
 {% schema %}
 {
-  "name": "t:general.page",
+  "name": "Page",
   "settings": []
 }
 {% endschema %}

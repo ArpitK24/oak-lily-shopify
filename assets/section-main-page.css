@@ -1,0 +1,42 @@
+/* Main Page Styles */
+.main-page {
+  padding-top: 45px;
+  padding-bottom: 60px;
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  color: #103f5a;
+}
+
+.main-page__title {
+  font-family: var(--font-primary--family, "Montserrat", sans-serif);
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+  color: #103f5a;
+  margin-bottom: 30px;
+  letter-spacing: 0.05em;
+}
+
+.main-page__content {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(16, 63, 90, 0.85);
+}
+
+.main-page__content p {
+  margin-bottom: 16px;
+}
+
+.main-page__content a {
+  color: #baa431;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.main-page__content a:hover {
+  color: #e7be27;
+}
+
+.page-width--narrow {
+  max-width: 800px;
+  margin: 0 auto;
+}

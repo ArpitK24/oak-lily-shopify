@@ -1,19 +1,76 @@
 {% comment %}
-  This section is used in the 404 template to render page shown when customers
-  enter an invalid store URL.
-
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/404
+  404 template with authentic client-side fallbacks for unconfigured store pages/policies
 {% endcomment %}
 
-<h1>{{ '404.title' | t }}</h1>
+<div id="fallback-404-default" class="template-404 page-width page-margin" style="text-align: center; padding: 80px 20px;">
+  <h1 class="title" style="font-family: var(--font-heading-family, 'Montserrat', sans-serif); color: #0e1b4d; font-size: 32px; margin-bottom: 16px;">
+    {{ '404.title' | t }}
+  </h1>
+  <p style="font-family: var(--font-body-family, 'Montserrat', sans-serif); color: rgba(14, 27, 77, 0.75); margin-bottom: 24px;">
+    {{ '404.not_found' | t }}
+  </p>
+  <a href="{{ routes.all_products_collection_url }}" class="button" style="display: inline-block; background-color: #baa431; color: #fff; padding: 12px 28px; text-decoration: none; border-radius: 4px; font-weight: 500;">
+    {{ '404.back_to_shopping' | t }}
+  </a>
+</div>
 
-<p>
-  {{ '404.not_found' | t }}
-</p>
+<div id="fallback-our-story" style="display: none;">
+  {% render 'our-story-content' %}
+</div>
 
-<a href="{{ routes.all_products_collection_url }}">
-  {{ '404.back_to_shopping' | t }}
-</a>
+<div id="fallback-privacy-policy" style="display: none;">
+  {% render 'policy-content', policy_handle: 'privacy-policy' %}
+</div>
+
+<div id="fallback-refund-policy" style="display: none;">
+  {% render 'policy-content', policy_handle: 'refund-policy' %}
+</div>
+
+<div id="fallback-terms-of-service" style="display: none;">
+  {% render 'policy-content', policy_handle: 'terms-of-service' %}
+</div>
+
+<div id="fallback-shipping-policy" style="display: none;">
+  {% render 'policy-content', policy_handle: 'shipping-policy' %}
+</div>
+
+<div id="fallback-contact-information" style="display: none;">
+  {% render 'policy-content', policy_handle: 'contact-information' %}
+</div>
+
+<div id="fallback-kitchen-napkins" style="display: none;">
+  {% render 'kitchen-napkins-content' %}
+</div>
+
+<script>
+  (function() {
+    var p = window.location.pathname.toLowerCase();
+    var defaultBox = document.getElementById('fallback-404-default');
+
+    function activate(id, title) {
+      if (defaultBox) defaultBox.style.display = 'none';
+      var el = document.getElementById(id);
+      if (el) el.style.display = 'block';
+      if (title) document.title = title + ' – OAK AND LILY';
+    }
+
+    if (p.indexOf('/our-story') !== -1) {
+      activate('fallback-our-story', 'Our Story');
+    } else if (p.indexOf('/privacy-policy') !== -1) {
+      activate('fallback-privacy-policy', 'Privacy policy');
+    } else if (p.indexOf('/refund-policy') !== -1) {
+      activate('fallback-refund-policy', 'Refund policy');
+    } else if (p.indexOf('/shipping-policy') !== -1) {
+      activate('fallback-shipping-policy', 'Shipping policy');
+    } else if (p.indexOf('/terms-of-service') !== -1) {
+      activate('fallback-terms-of-service', 'Terms of service');
+    } else if (p.indexOf('/contact-information') !== -1) {
+      activate('fallback-contact-information', 'Contact information');
+    } else if (p.indexOf('/kitchen-napkins') !== -1) {
+      activate('fallback-kitchen-napkins', 'Oak&Lily 100% Pure Cotton Kitchen Napkins');
+    }
+  })();
+</script>
 
 {% schema %}
 {
